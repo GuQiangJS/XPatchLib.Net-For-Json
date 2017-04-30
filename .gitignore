@@ -5,3 +5,6 @@ src/XPatchLib.Json/bin/Debug/XPatchLib.Json.XML
 src/XPatchLib.Json/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /src/XPatchLib.Json/obj/Debug
 /XPatchLib.Json.Output/Debug
+/src/XPatchLib.Json/bin/Debug
+/src/XPatchLib.Json.UnitTest/bin/Debug
+/src/XPatchLib.Json.UnitTest/obj/Debug
