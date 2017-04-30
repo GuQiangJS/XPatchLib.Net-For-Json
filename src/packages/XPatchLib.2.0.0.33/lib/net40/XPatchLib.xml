@@ -1,0 +1,2596 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XPatchLib</name>
+    </assembly>
+    <members>
+        <member name="T:XPatchLib.Action">
+            <summary>
+                增量内容动作类型。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.Action.Edit">
+            <summary>
+                编辑
+            </summary>
+        </member>
+        <member name="F:XPatchLib.Action.Add">
+            <summary>
+                新增
+            </summary>
+        </member>
+        <member name="F:XPatchLib.Action.Remove">
+            <summary>
+                删除
+            </summary>
+        </member>
+        <member name="F:XPatchLib.Action.SetNull">
+            <summary>
+                设置为Null
+            </summary>
+        </member>
+        <member name="T:XPatchLib.ActionHelper">
+            <summary>
+                <see cref="T:XPatchLib.Action" /> 帮助类。
+            </summary>
+            <remarks>
+                主要来用做由本文向<see cref="T:XPatchLib.Action" />对象实例转换。
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.ActionHelper.TryParse(System.String,XPatchLib.Action@)">
+            <summary>
+                将一个枚举常数的名称的字符串表示转换成等效的枚举对象。用于指示转换是否成功的返回值。
+            </summary>
+            <param name="actionValue">要转换的枚举名称的字符串表示形式。</param>
+            <param name="action">此方法在返回时包含一个类型为 <see cref="T:XPatchLib.Action" /> 的一个对象，其值由 value 表示。该参数未经初始化即被传递。</param>
+            <returns>如果 <paramref name="actionValue" /> 参数成功转换，则为 <c>true</c>；否则为 <c>false</c>。</returns>
+        </member>
+        <member name="T:XPatchLib.AttributeMissException">
+            <summary>
+                自定义属性未找到异常。
+            </summary>
+            <example>
+                <para>
+        当集合元素类型没有定义主键时，在序列化/反序列化 集合对象时会抛出 AttributeMissException 异常。
+      </para><code language="c#" source="..\..\XPatchLib.Example\CSharp\Examples\AttributeMissException.cs" />
+            </example>
+        </member>
+        <member name="M:XPatchLib.AttributeMissException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                用序列化数据初始化 <see cref="T:XPatchLib.AttributeMissException" /> 类的新实例。
+            </summary>
+            <param name="info">
+                <see cref="T:System.Runtime.Serialization.SerializationInfo" /> ，它存有有关所引发的异常的序列化对象数据。
+            </param>
+            <param name="context">
+                <see cref="T:System.Runtime.Serialization.StreamingContext" /> ，它包含有关源或目标的上下文信息。
+            </param>
+        </member>
+        <member name="M:XPatchLib.AttributeMissException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                用关于异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 。
+            </summary>
+            <param name="info">
+            </param>
+            <param name="context">
+            </param>
+        </member>
+        <member name="M:XPatchLib.AttributeMissException.#ctor(System.Type,System.String)">
+            <summary>
+                使用指定的自定义属性名称初始化 <see cref="T:XPatchLib.AttributeMissException" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的未找到特性的类型。。
+            </param>
+            <param name="pAttrName">
+                指定的自定义属性名称。
+            </param>
+        </member>
+        <member name="M:XPatchLib.AttributeMissException.#ctor">
+            <summary>
+                初始化 <see cref="T:XPatchLib.AttributeMissException" /> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.AttributeMissException.#ctor(System.String)">
+            <summary>
+                使用指定的错误信息初始化 <see cref="T:XPatchLib.AttributeMissException" /> 类的新实例。
+            </summary>
+            <param name="message">
+                描述错误的消息。
+            </param>
+        </member>
+        <member name="M:XPatchLib.AttributeMissException.#ctor(System.String,System.Exception)">
+            <summary>
+                使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:XPatchLib.AttributeMissException" /> 类的新实例。
+            </summary>
+            <param name="message">
+                解释异常原因的错误信息。
+            </param>
+            <param name="innerException">
+                导致当前异常的异常；如果未指定内部异常，则是一个 null 引用（在 Visual Basic 中为 Nothing）。
+            </param>
+        </member>
+        <member name="P:XPatchLib.AttributeMissException.AttributeName">
+            <summary>
+                获取当前未找到的自定义特性的名称。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.AttributeMissException.ErrorType">
+            <summary>
+                获取当前未找到特性的类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.AttributeMissException.Message">
+            <summary>
+                获取描述当前异常的消息。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ClrHelper.GetValueFunc(System.Reflection.PropertyInfo)">
+            <summary>
+            </summary>
+            <param name="pProperty">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:XPatchLib.ColorHelper">
+            <summary>
+                ARGB 颜色 操作帮助类。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ColorHelper.TransFromString(System.String)">
+            <summary>
+                将指定字符串转换为 <see cref="T:System.Drawing.Color" /> 的实例。
+            </summary>
+            <param name="pColorString">
+                指定字符串。
+            </param>
+            <returns>
+                正常被转换后的 <see cref="T:System.Drawing.Color" /> 的实例。
+            </returns>
+            <exception cref="T:System.FormatException">
+                <paramref name="pColorString" /> 不能被转换成 Color 对象时。
+            </exception>
+        </member>
+        <member name="M:XPatchLib.ColorHelper.TransToString(System.Object)">
+            <summary>
+                将一个 ARGB 颜色 的实例转换为字符串。
+            </summary>
+            <param name="pColorObject">
+                ARGB 颜色 的实例。
+            </param>
+            <returns>
+                <para> 当 <paramref name="pColorObject" /> </para>
+                <para> is null 时 ， 返回 <see cref="F:System.String.Empty" /> 。 </para>
+                <para>
+                    <see cref="P:System.Drawing.Color.IsNamedColor" />== <b> true </b> 时 ， 返回 <see cref="P:System.Drawing.Color.Name" /> 。
+                </para>
+                <para> 否则 </para>
+                <para> 返回 <paramref name="pColorObject" /> 的32位ARGB值，并转换为16进制。 </para>
+            </returns>
+            <example>
+                <code>
+             using System;
+            
+             class ColorHelperTestClass
+             {
+                 public static void Main()
+                 {
+                     Console.WriteLine(ColorHelper.TransToString(Color.Aqua));
+                     Console.WriteLine(ColorHelper.TransToString(Color.FromArgb(255, 255, 255)));
+                 }
+             }
+             /*
+             This code example produces the following results:
+            
+             Aqua
+             #FFFFFFFF
+             */
+             </code>
+            </example>
+        </member>
+        <member name="M:XPatchLib.ColorHelper.TryTransFromString(System.String,System.Drawing.Color@)">
+            <summary>
+                尝试将指定字符串转换为 <see cref="T:System.Drawing.Color" /> 的实例。
+            </summary>
+            <param name="pColorString">
+                指定字符串。
+            </param>
+            <param name="pColor">
+                转换后的 <see cref="T:System.Drawing.Color" /> 的实例。
+            </param>
+            <returns>
+                <para> 当转换成功时，返回 true，否则返回 false。 </para>
+            </returns>
+            <example>
+                <code>
+             using System;
+            
+             class ColorHelperTestClass
+             {
+                 public static void Main()
+                 {
+                     DoTrans("AliceBlue");
+                     Console.WriteLine("");
+                     DoTrans("#FFFFFFFF");
+                 }
+            
+                 private static void DoTrans(string pString)
+                 {
+                     Color result;
+                     ColorHelper.TryTransFromString(pString, out result);
+            
+                     Console.WriteLineWriteLine(result.Name);
+                     Console.WriteLine(result.A);
+                     Console.WriteLine(result.R);
+                     Console.WriteLine(result.G);
+                     Console.WriteLine(result.B);
+                 }
+             }
+             /*
+             This code example produces the following results:
+            
+             AliceBlue
+             255
+             240
+             248
+             255
+            
+             ffffffff
+             255
+             255
+             255
+             255
+             */
+             </code>
+            </example>
+        </member>
+        <member name="T:XPatchLib.CombineAttribute">
+            <summary>
+                数据合并时读取XmlReader临时使用的对象类型，用来记录当前XmlReader的Attributes
+            </summary>
+        </member>
+        <member name="T:XPatchLib.CombineBase">
+            <summary>
+                增量内容文档合并基础类。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.CombineBase.Combine(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">当参数 <paramref name="pReader" /> is null 时。</exception>
+            <exception cref="T:System.ArgumentNullException">当参数 <paramref name="pReader" /> is null 时。</exception>
+            <exception cref="T:System.ArgumentException">当参数 <paramref name="pName" /> 长度为 0 时。</exception>
+        </member>
+        <member name="M:XPatchLib.CombineBase.CheckSetNullReturn">
+            <summary>
+                检查当前Action是否为SetNull，如果是就退出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineBase.InitAttributes(XPatchLib.ITextReader,System.String)">
+            <summary>
+                初始化当前正在读取的节点的Attribute内容
+            </summary>
+            <param name="pReader">The p reader.</param>
+            <param name="pName">Name of the p.</param>
+            <remarks>执行此操作会移动到移动到包含当前属性节点的元素。<see cref="M:System.Xml.XmlReader.MoveToElement" /></remarks>
+        </member>
+        <member name="M:XPatchLib.CombineBase.AnlysisAttributes(XPatchLib.ITextReader,System.String)">
+            <summary>
+                分析XmlReader中的Attribute
+            </summary>
+            <param name="pReader">The p reader.</param>
+            <param name="pName">Name of the p.</param>
+            <returns></returns>
+            <remarks>执行此操作会移动到移动到包含当前属性节点的元素。<see cref="M:System.Xml.XmlReader.MoveToElement" /></remarks>
+        </member>
+        <member name="M:XPatchLib.CombineBase.CombineAction(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineBase.#ctor(XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.CombineBase" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的类型。
+            </param>
+        </member>
+        <member name="P:XPatchLib.CombineBase.Type">
+            <summary>
+                获取或设置当前正在处理的类型。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.CombineBasic">
+            <summary>
+                基础类型增量内容合并类。
+            </summary>
+            <seealso cref="T:XPatchLib.CombineBase" />
+        </member>
+        <member name="M:XPatchLib.CombineBasic.CombineAction(System.TypeCode,System.Boolean,XPatchLib.DateTimeSerializationMode,System.String)">
+            <summary>
+                合并数据。
+            </summary>
+            <param name="pTypeCode">合并后的数据类型。</param>
+            <param name="pIsGuid">是否为<see cref="T:System.Guid" />类型。</param>
+            <param name="pMode">指定在字符串与 <see cref="T:System.DateTime" /> 之间转换时，如何处理时间值。</param>
+            <param name="pValue">待合并的数据值。</param>
+            <returns>返回合并后的数据。</returns>
+        </member>
+        <member name="M:XPatchLib.CombineBasic.CombineAction(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineBasic.#ctor(XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.CombineBasic" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的类型。
+            </param>
+        </member>
+        <member name="T:XPatchLib.CombineCore">
+            <summary>
+                增量内容合并入口类。
+            </summary>
+            <seealso cref="T:XPatchLib.CombineBase" />
+            <remarks>
+                此类是增量内容合并的入口类，由此类区分待产生增量内容的对象类型，调用不同的增量内容产生类。
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.CombineCore.CombineAction(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineCore.#ctor(XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.CombineCore" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的类型。
+            </param>
+        </member>
+        <member name="T:XPatchLib.CombineIDictionary">
+            <summary>
+                字典类型增量内容合并类。
+            </summary>
+            <seealso cref="T:XPatchLib.CombineBase" />
+        </member>
+        <member name="P:XPatchLib.CombineIDictionary.GenericArgumentType">
+            <summary>
+                集合类型中元素的类型。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.CombineIDictionary.CombineAction(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineIDictionary.CombineCore(XPatchLib.ITextReader,System.Object@,System.String)">
+            <summary>
+                增量内容数据合并核心方法。
+            </summary>
+            <param name="pReader">Xml读取器。</param>
+            <param name="pOriObject">待合并数据的原始对象。</param>
+            <param name="pName">当前正在解析的节点名称。</param>
+        </member>
+        <member name="M:XPatchLib.CombineIDictionary.Update(System.String,System.Object,System.Object,System.Object)">
+            <summary>
+                执行增加或更新操作。
+            </summary>
+            <param name="pOperatorName">操作名称。</param>
+            <param name="pOriObject">待附加增量的对象实例。</param>
+            <param name="pKey">Key值。</param>
+            <param name="pValue">Value值。</param>
+        </member>
+        <member name="M:XPatchLib.CombineIDictionary.Remove(System.Object,System.Object)">
+            <summary>
+                删除操作。
+            </summary>
+            <param name="pOriObject">待删除增量的对象实例。</param>
+            <param name="pKey">Key值。</param>
+        </member>
+        <member name="M:XPatchLib.CombineIDictionary.#ctor(XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.CombineIEnumerable" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的类型。
+            </param>
+            <exception cref="T:System.ArgumentException">
+                待处理的类型不是字典类型时。
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                当 <paramref name="pType" /> 上无法获取元素类型时。
+            </exception>
+        </member>
+        <member name="T:XPatchLib.CombineIEnumerable">
+            <summary>
+                集合类型增量内容合并类。
+            </summary>
+            <seealso cref="T:XPatchLib.CombineBase" />
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.CombineAction(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.#ctor(XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.CombineIEnumerable" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的类型。
+            </param>
+        </member>
+        <member name="P:XPatchLib.CombineIEnumerable.GenericArgumentType">
+            <summary>
+                获取集合中的元素类型。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.CombineAddedItem(XPatchLib.ITextReader,System.Object@,System.String)">
+            <summary>
+                合并新增类型动作的增量内容。
+            </summary>
+            <param name="pReader">Xml读取器。</param>
+            <param name="pOriObject">待合并数据的原始对象。</param>
+            <param name="pName">当前正在解析的节点名称</param>
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.CombineCore(XPatchLib.ITextReader,System.Object@,XPatchLib.KeyValuesObject[],System.String)">
+            <summary>
+                增量内容数据合并核心方法。
+            </summary>
+            <param name="pReader">Xml读取器。</param>
+            <param name="pOriObject">待合并数据的原始对象。</param>
+            <param name="pOriEnumerable">当前正在处理的集合对象。</param>
+            <param name="pName">当前正在解析的节点名称。</param>
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.CombineEditItem(XPatchLib.ITextReader,XPatchLib.CombineAttribute,System.Object@,XPatchLib.KeyValuesObject[],System.String)">
+            <summary>
+                合并编辑类型动作的增量内容。
+            </summary>
+            <param name="pReader">Xml读取器。</param>
+            <param name="pAttribute">当前正在解析的Attributes。（包含了Action和主键集合）</param>
+            <param name="pOriObject">待合并数据的原始对象。</param>
+            <param name="pOriEnumerable">当前正在处理的集合对象。</param>
+            <param name="pName">当前正在解析的节点名称。</param>
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.CombineEditItem(XPatchLib.ITextReader,System.Object@,System.Int32,System.String)">
+            <summary>
+                根据指定的<paramref name="pIndex" />更新对应的集合中的元素。
+            </summary>
+            <param name="pReader">Xml读取器。</param>
+            <param name="pOriObject">待合并数据的原始对象。</param>
+            <param name="pIndex">待变更对象在集合中的位置。</param>
+            <param name="pName">当前正在解析的节点名称。</param>
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.CombineRemovedItem(XPatchLib.ITextReader,XPatchLib.CombineAttribute,System.Object@,XPatchLib.KeyValuesObject[])">
+            <summary>
+                合并删除类型动作的增量内容。
+            </summary>
+            <param name="pReader">Xml读取器。</param>
+            <param name="pAttribute">当前正在解析的Attributes。（包含了Action和主键集合）</param>
+            <param name="pOriObject">待合并数据的原始对象。</param>
+            <param name="pOriEnumerable">当前正在处理的集合对象。</param>
+        </member>
+        <member name="M:XPatchLib.CombineIEnumerable.CombineRemovedItem(System.Object@,System.Object)">
+            <summary>
+                根据指定的<paramref name="pFoundItem" />更新对应的集合中的元素。
+            </summary>
+            <param name="pOriObject">待合并数据的原始对象。</param>
+            <param name="pFoundItem">待删除的对象实例。</param>
+        </member>
+        <member name="T:XPatchLib.CombineKeyValuePair">
+            <summary>
+                KeyValuePair类型增量内容合并类。
+            </summary>
+            <seealso cref="T:XPatchLib.CombineBase" />
+        </member>
+        <member name="M:XPatchLib.CombineKeyValuePair.CheckSetNullReturn">
+            <summary>
+                检查当前Action是否为SetNull，如果是就退出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineKeyValuePair.CombineAction(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">原始Key值与更新后的Key值不符时。</exception>
+            <exception cref="T:System.NotImplementedException">
+                待更新的Key值存在，但是更新操作被指定为<see cref="F:XPatchLib.Action.Remove" />,
+                <see cref="F:XPatchLib.Action.Edit" />,<see cref="F:XPatchLib.Action.SetNull" />之外的操作时。
+            </exception>
+        </member>
+        <member name="M:XPatchLib.CombineKeyValuePair.#ctor(XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.CombineIEnumerable" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的类型。
+            </param>
+        </member>
+        <member name="T:XPatchLib.CombineObject">
+            <summary>
+                复杂类型增量内容合并类。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.CombineObject.CombineAction(XPatchLib.ITextReader,System.Object,System.String)">
+            <summary>
+                根据增量内容创建基础类型实例。
+            </summary>
+            <param name="pReader">XML读取器。</param>
+            <param name="pOriObject">现有待合并数据的对象。</param>
+            <param name="pName">当前读取的内容名称。</param>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.CombineObject.#ctor(XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.CombineObject" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的类型。
+            </param>
+        </member>
+        <member name="T:XPatchLib.ConstValue">
+            <summary>
+                常量定义。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.COLOR_FORMAT">
+            <summary>
+                <see cref="T:System.Drawing.Color" />类型的格式化字符串。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.COLOR_STARTCHAR">
+            <summary>
+                <see cref="T:System.Drawing.Color" />类型输出的开始字符串。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.KEY">
+            <summary>
+                生成或读取XML时，<see cref="!:System.Collections.Generic.KeyValuePair&lt;,&gt;" />类型的Key值的字符串。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.OPERATOR_ADD">
+            <summary>
+                集合类型 增加 操作方法名
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.OPERATOR_GET">
+            <summary>
+                集合类型 获取值 操作方法名
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.OPERATOR_REMOVE">
+            <summary>
+                集合类型 删除 操作方法名
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.OPERATOR_SET">
+            <summary>
+                集合类型 更改值 操作方法名
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.UNDERLINE">
+            <summary>
+                下划线。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ConstValue.VALUE">
+            <summary>
+                生成或读取XML时，<see cref="!:System.Collections.Generic.KeyValuePair&lt;,&gt;" />类型的Value值的字符串。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.DateTimeSerializationMode">
+            <summary>
+                指定如何处理字符串之间进行转换时的时间值和 <see cref="T:System.DateTime" />。
+            </summary>
+            <seealso cref="T:System.Xml.XmlDateTimeSerializationMode" />
+        </member>
+        <member name="F:XPatchLib.DateTimeSerializationMode.Local">
+            <summary>
+                作为本地时间进行处理。 如果 <see cref="T:System.DateTime" /> 对象都表示协调世界时 (UTC)，它将转换为本地时间。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.DateTimeSerializationMode.Utc">
+            <summary>
+                将视为 UTC。 如果 <see cref="T:System.DateTime" /> 对象都表示本地时间，它将转换为 UTC。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.DateTimeSerializationMode.Unspecified">
+            <summary>
+                如果将视为本地时间 <see cref="T:System.DateTime" /> 要转换为一个字符串。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.DateTimeSerializationMode.RoundtripKind">
+            <summary>
+                在转换时，应保留时区信息。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.DivideAttachment">
+            <summary>
+                生成增量时可能用到的附件类型定义。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.DivideAttachment.ParentQuere">
+            <summary>
+                获取当前元素的父级元素队列
+            </summary>
+        </member>
+        <member name="P:XPatchLib.DivideAttachment.PrimaryKeys">
+            <summary>
+                获取或设置当前元素的主键名称数组。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.DivideAttachment.CurrentType">
+            <summary>
+                获取父级对象类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.DivideAttachment.CurrentAction">
+            <summary>
+                获取或设置当前正在进行的操作。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ParentObject.Type">
+            <summary>
+                获取父级对象类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ParentObject.Name">
+            <summary>
+                获取父级元素名称。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.DivideIDictionary">
+            <summary>
+                字典类型增量内容产生类。
+            </summary>
+            <seealso cref="T:XPatchLib.DivideBase" />
+        </member>
+        <member name="P:XPatchLib.DivideIDictionary.GenericArgumentType">
+            <summary>
+                集合类型中元素的类型。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.DivideIDictionary.DivideAction(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容的实际方法。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideIDictionary.#ctor(XPatchLib.ITextWriter,XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.DivideIEnumerable" /> 类的新实例。
+            </summary>
+            <param name="pWriter">写入器。</param>
+            <param name="pType">指定的类型。</param>
+            <exception cref="T:XPatchLib.PrimaryKeyException">默认在字符串与System.DateTime 之间转换时，转换时应保留时区信息。</exception>
+            <exception cref="T:System.ArgumentException">待处理的类型不是字典类型时。</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">当 <paramref name="pType" /> 上无法获取元素类型时。</exception>
+        </member>
+        <member name="M:XPatchLib.DivideIDictionary.TryGetAddedItems(XPatchLib.KeyValuesObject[],XPatchLib.KeyValuesObject[],System.Collections.Generic.IEnumerable{XPatchLib.KeyValuesObject}@)">
+            <summary>
+                尝试比较原始集合和更新后的集合，找到被添加的元素集合。
+            </summary>
+            <param name="pOriItems">原始集合。</param>
+            <param name="pRevItems">更新后的集合。</param>
+            <param name="pFoundItems">找到的被添加的元素集合。</param>
+            <returns>
+                当找到一个或多个被添加的元素时，返回 true 否则 返回 false 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideIDictionary.TryGetEditedItems(XPatchLib.KeyValuesObject[],XPatchLib.KeyValuesObject[],System.Collections.Generic.IEnumerable{XPatchLib.KeyValuesObject}@)">
+            <summary>
+                尝试比较原始集合和更新后的集合，找到可能被修改的元素集合。 (交集）
+            </summary>
+            <param name="pOriItems">原始集合。</param>
+            <param name="pRevItems">更新后的集合。</param>
+            <param name="pFoundItems">找到的被修改的元素集合。</param>
+            <returns>
+                当找到一个或多个被修改的元素时，返回 true 否则 返回 false 。
+            </returns>
+            <remarks>
+                返回的集合是即存在于原始集合又存在于更新后集合的对象。
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.DivideIDictionary.TryGetRemovedItems(XPatchLib.KeyValuesObject[],XPatchLib.KeyValuesObject[],System.Collections.Generic.IEnumerable{XPatchLib.KeyValuesObject}@)">
+            <summary>
+                尝试比较原始集合和更新后的集合，找到被删除的元素集合。
+            </summary>
+            <param name="pOriItems">原始集合。</param>
+            <param name="pRevItems">更新后的集合。</param>
+            <param name="pFoundItems">找到的被删除的元素集合。</param>
+            <returns>
+                当找到一个或多个被删除的元素时，返回 true 否则 返回 false 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideIDictionary.DivideItems(XPatchLib.KeyValuesObject[],XPatchLib.KeyValuesObject[],XPatchLib.Action,XPatchLib.DivideAttachment)">
+            <summary>
+                按照传入的操作方式产生集合类型增量内容。
+            </summary>
+            <param name="pOriItems">原始集合。</param>
+            <param name="pRevItems">更新后的集合。</param>
+            <param name="pAction">操作方式。</param>
+            <param name="pAttach">The p attach.</param>
+        </member>
+        <member name="T:XPatchLib.DivideKeyValuePair">
+            <summary>
+                KeyValuePair类型增量内容产生类。
+            </summary>
+            <seealso cref="T:XPatchLib.DivideBase" />
+        </member>
+        <member name="M:XPatchLib.DivideKeyValuePair.Divide(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideKeyValuePair.DivideAction(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容的实际方法。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideKeyValuePair.#ctor(XPatchLib.ITextWriter,XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.DivideKeyValuePair" /> 类的新实例。
+            </summary>
+            <param name="pWriter">写入器。</param>
+            <param name="pType">指定的类型。</param>
+        </member>
+        <member name="T:XPatchLib.EnumWrapper">
+            <summary>
+                枚举对象包装器。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.EnumWrapper.#ctor(System.Type)">
+            <summary>
+                使用指定的枚举类型初始化 <see cref="T:XPatchLib.EnumWrapper" /> 类的新实例。
+            </summary>
+            <param name="pType">
+                指定的枚举类型。
+            </param>
+            <exception cref="T:System.ArgumentException">
+                当 <paramref name="pType" /> 不是枚举类型时。
+            </exception>
+        </member>
+        <member name="M:XPatchLib.EnumWrapper.GetType">
+            <summary>
+                当前包装器包装的枚举类型。
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XPatchLib.EnumWrapper.TransFromString(System.String)">
+            <summary>
+                将指定的枚举名称，转换为枚举对象。
+            </summary>
+            <param name="pEnumString">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XPatchLib.EnumWrapper.TransToString(System.Object)">
+            <summary>
+                获取枚举对象的值。
+            </summary>
+            <param name="pEnumObject">
+            </param>
+            <returns>
+                <para> 返回枚举对象的Name。 </para>
+                <para>
+                    对于标记了 <see cref="T:System.FlagsAttribute" /> 特性的枚举对象，如果存在多个枚举值，则会在多个枚举值之间用 ', ' 进行分割。
+                </para>
+            </returns>
+        </member>
+        <member name="T:XPatchLib.Formatting">
+            <summary>
+            指示如何对输出进行格式设置。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.Formatting.Indented">
+            <summary>
+                可能导致子元素根据缩进显示 Indentation 和 IndentChar 设置。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.Formatting.None">
+            <summary>
+                尚无特殊格式设置将应用。 这是默认设置。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.Guard">
+            <summary>
+                一个静态的辅助类，包括各种参数的检测程序。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.Guard.ArgumentNotNull(System.Object,System.String)">
+            <summary>
+                当参数 <paramref name="pArgumentValue" /> is null 时，抛出 <see cref="T:System.ArgumentNullException" /> 异常。
+            </summary>
+            <param name="pArgumentValue">待测试的参数实例。</param>
+            <param name="pArgumentName">待测试的参数名称。</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentNullException">当参数 <paramref name="pArgumentValue" /> is null 时。</exception>
+        </member>
+        <member name="M:XPatchLib.Guard.ArgumentNotNullOrEmpty(System.Collections.ICollection,System.String)">
+            <summary>
+                当参数 <paramref name="pArgumentValue" /> 长度为 0 时，抛出 <see cref="T:System.ArgumentException" /> 异常。
+            </summary>
+            <param name="pArgumentValue">待测试的参数实例。</param>
+            <param name="pArgumentName">待测试的参数名称。</param>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentNullException">当参数 <paramref name="pArgumentValue" /> is null 时。</exception>
+            <exception cref="T:System.ArgumentException">当参数 <paramref name="pArgumentValue" /> 长度为 0 时。</exception>
+        </member>
+        <member name="M:XPatchLib.Guard.ArgumentNotNullOrEmpty(System.String,System.String)">
+            <summary>
+                当参数
+                <para>
+                    <paramref name="pArgumentValue" /> 长度为 0 时，抛出 <see cref="T:System.ArgumentException" /> 异常。
+                </para>
+                <para>
+                    <paramref name="pArgumentValue" /> is null 时，抛出 <see cref="T:System.ArgumentNullException" /> 异常。
+                </para>
+            </summary>
+            <param name="pArgumentValue">待测试的参数实例。</param>
+            <param name="pArgumentName">待测试的参数名称。</param>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentNullException">当参数 <paramref name="pArgumentValue" /> is null 时。</exception>
+            <exception cref="T:System.ArgumentException">当参数 <paramref name="pArgumentValue" /> 长度为 0 时。</exception>
+        </member>
+        <member name="M:XPatchLib.Guard.FileNotFound(System.String)">
+            <summary>
+                当参数 <paramref name="pFileFullName" /> 标识的文件不存在时。抛出 <see cref="T:System.IO.FileNotFoundException" /> 异常。
+            </summary>
+            <param name="pFileFullName">待检测的文件完整路径。</param>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.ArgumentNullException">当参数 <paramref name="pFileFullName" /> is null 时。</exception>
+            <exception cref="T:System.ArgumentException">当参数 <paramref name="pFileFullName" /> 长度为 0 时。</exception>
+            <exception cref="T:System.IO.FileNotFoundException">当参数 <paramref name="pFileFullName" /> 指定的文件不存在时。</exception>
+        </member>
+        <member name="T:XPatchLib.IDivide">
+            <summary>
+                产生增量的操作接口。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.IDivide.ParentElementWrited">
+            <summary>
+                获取或设置父级节点内容是否已经被写入。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.IDivide.Divide(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。</returns>
+        </member>
+        <member name="T:XPatchLib.ITextReader">
+            <summary>
+                表示提供对数据进行快速、非缓存、只进访问的读取器。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ITextReader.Setting">
+            <summary>
+                获取或设置读取器设置。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ITextReader.ReadState">
+            <summary>
+                获取读取器的状态。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ITextReader.EOF">
+            <summary>
+                获取一个值，该值指示此读取器是否定位在流的结尾。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ITextReader.Name">
+            <summary>
+                获取当前节点的限定名。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ITextReader.Value">
+            <summary>
+                获取当前节点的文本值。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ITextReader.AttributeCount">
+            <summary>
+                获取当前节点上的属性数。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextReader.Read">
+            <summary>
+                从流中读取下一个节点。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextReader.ReadString">
+            <summary>
+                将元素或文本节点的内容当做字符串读取。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextReader.MoveToNextAttribute">
+            <summary>
+                移动到下一个属性。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextReader.MoveToElement">
+            <summary>
+                移动到包含当前属性节点的元素。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XPatchLib.ITextReader.NodeType">
+            <summary>
+            获取当前节点的类型。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.ITextWriter">
+            <summary>
+                表示提供快速、非缓存、只进方法的写入器，该方法生成包含指定数据结构的流或文件。
+            </summary>
+            <seealso cref="T:XPatchLib.XmlTextWriter"/>
+        </member>
+        <member name="P:XPatchLib.ITextWriter.IgnoreAttributeType">
+            <summary>
+                获取指示 <see cref="T:XPatchLib.Serializer" /> 方法 <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" /> 进行序列化的公共字段或公共读/写属性值。
+            </summary>
+            <remarks>
+                用于控制如何 <see cref="T:XPatchLib.Serializer" /> 方法 <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" /> 序列化对象。
+            </remarks>
+            <seealso cref="P:XPatchLib.XmlTextWriter.IgnoreAttributeType"/>
+        </member>
+        <member name="P:XPatchLib.ITextWriter.Setting">
+            <summary>
+                获取或设置写入器设置。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteStartDocument">
+            <summary>
+                写入文档开始标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteEndDocument">
+            <summary>
+                写入文档结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.Flush">
+            <summary>
+                将缓冲区中的所有内容刷新到基础流，并同时刷新基础流。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteStartObject(System.String)">
+            <summary>
+                写入对象开始标记。
+            </summary>
+            <param name="pName">对象名称。</param>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteEndObject">
+            <summary>
+                写入对象结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteAttribute(System.String,System.String)">
+            <summary>
+                写入特性。
+            </summary>
+            <param name="pName">特性名称。</param>
+            <param name="pValue">特性值。</param>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteProperty(System.String,System.String)">
+            <summary>
+                写入属性。
+            </summary>
+            <param name="pName">属性名称。</param>
+            <param name="pValue">属性值。</param>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteStartProperty(System.String)">
+            <summary>
+                写入属性开始标记。
+            </summary>
+            <param name="pName">属性名称。</param>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteEndProperty">
+            <summary>
+                写入属性结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteStartArray(System.String)">
+            <summary>
+                写入列表类型对象开始标记。
+                <param name="pName">列表类型对象实例名称。</param>
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteEndArray">
+            <summary>
+                写入列表对象结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ITextWriter.WriteValue(System.String)">
+            <summary>
+                写入文本。
+            </summary>
+            <param name="pValue">待写入的文本。</param>
+        </member>
+        <member name="T:XPatchLib.ISerializeSetting">
+            <summary>
+                序列化/反序列化时的设置。
+            </summary>
+            <seealso cref="T:XPatchLib.XmlSerializeSetting" />
+        </member>
+        <member name="P:XPatchLib.ISerializeSetting.ActionName">
+            <summary>
+                获取或设置序列化/反序列化时，文本中标记 '<b>动作</b>' 的文本。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ISerializeSetting.Mode">
+            <summary>
+                获取或设置在字符串与 <see cref="T:System.DateTime" /> 之间转换时，如何处理时间值。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.ISerializeSetting.SerializeDefalutValue">
+            <summary>
+                获取或设置是否序列化默认值。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.JsonTextReader">
+            <summary>
+                表示提供对 Json 数据进行快速、非缓存、只进访问的读取器。
+            </summary>
+            <seealso cref="T:XPatchLib.ITextReader" />
+        </member>
+        <member name="M:XPatchLib.JsonTextReader.#ctor(System.IO.Stream)">
+            <summary>
+                以指定的 <paramref name="pStream" /> 实例创建 <see cref="T:XPatchLib.JsonTextReader" /> 类型实例。
+            </summary>
+            <param name="pStream">包含 Json 数据的流。</param>
+        </member>
+        <member name="M:XPatchLib.JsonTextReader.#ctor(System.IO.Stream,XPatchLib.DateTimeSerializationMode)">
+            <summary>
+                以指定的 <paramref name="pStream" /> 实例创建 <see cref="T:XPatchLib.JsonTextReader" /> 类型实例，同时指定字符串与 <see cref="T:System.DateTime" />
+                之间转换时，如何处理时间值。
+            </summary>
+            <param name="pStream">包含 Json 数据的流。。</param>
+            <param name="pMode">字符串与 <see cref="T:System.DateTime" /> 之间转换时，如何处理时间值。</param>
+        </member>
+        <member name="P:XPatchLib.JsonTextReader.ReadState">
+            <summary>
+                获取读取器的状态。
+            </summary>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="P:XPatchLib.JsonTextReader.EOF">
+            <summary>
+                获取一个值，该值指示此读取器是否定位在流的结尾。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.JsonTextReader.Name">
+            <summary>
+                获取当前节点的限定名。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.JsonTextReader.Value">
+            <summary>
+                获取当前节点的文本值。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.JsonTextReader.AttributeCount">
+            <summary>
+                获取当前节点上的属性数。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.JsonTextReader.Read">
+            <summary>
+                从流中读取下一个节点。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.JsonTextReader.ReadString">
+            <summary>
+                将元素或文本节点的内容当做字符串读取。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.JsonTextReader.MoveToNextAttribute">
+            <summary>
+                移动到下一个属性。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.JsonTextReader.MoveToElement">
+            <summary>
+                移动到包含当前属性节点的元素。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XPatchLib.JsonTextReader.NodeType">
+            <summary>
+            获取当前节点的类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.JsonTextReader.Setting">
+            <summary>
+            获取或设置读取器设置。
+            </summary>
+            <value><see cref="T:XPatchLib.XmlSerializeSetting"/></value>
+        </member>
+        <member name="M:XPatchLib.JsonTextReader.Dispose(System.Boolean)">
+            <summary>
+                执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.MemberWrapper">
+            <summary>
+                成员属性包装器。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.MemberWrapper.#ctor(System.Reflection.MemberInfo)">
+            <summary>
+                使用指定的 <see cref="T:System.Reflection.MemberInfo" /> 初始化
+                <see cref="T:XPatchLib.MemberWrapper" /> 类的新实例。
+            </summary>
+            <param name="pMemberInfo">
+                指定的成员属性的信息。
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="pMemberInfo" /> 为空时。
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="pMemberInfo" />.MemberType 既不是 <see cref="F:System.Reflection.MemberTypes.Property" /> 也不是
+                <see cref="F:System.Reflection.MemberTypes.Field" /> 时。
+            </exception>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.DefaultValue">
+            <summary>
+                获取类型默认值。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.HasPublicGetter">
+            <summary>
+                获取Getter是否为Public。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.HasPublicSetter">
+            <summary>
+                获取Setter是否为Public。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.IsBasicType">
+            <summary>
+                是否为基础类型。
+            </summary>
+            <remarks>
+                参见 <see cref="M:XPatchLib.ReflectionUtils.IsBasicType(System.Type)" />
+            </remarks>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.IsColor">
+            <summary>
+                获取是否为 Color 类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.IsEnum">
+            <summary>
+                获取是否为枚举类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.IsIEnumerable">
+            <summary>
+                是否为集合类型。
+            </summary>
+            <remarks>
+                参见 <see cref="M:XPatchLib.ReflectionUtils.IsArray(System.Type)" />
+            </remarks>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.IsProperty">
+            <summary>
+                是不是属性类型。
+            </summary>
+            <remarks>
+                如果不是就是字段（Field）类型。
+            </remarks>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.MemberInfo">
+            <summary>
+                获取当前成员属性实例。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.Name">
+            <summary>
+                获取当前成员的名称。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.Type">
+            <summary>
+                获取类型。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.MemberWrapper.GetIgnore(System.Type)">
+            <summary>
+                获取当前成员的 <b>跳过序列化</b> 特性标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.MemberWrapper.InitDefaultValue">
+            <summary>
+                初始化当前成员属性的默认值。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.MemberWrapper.MemberType">
+            <summary>
+                获取类型。
+            </summary>
+            <remarks>实际数据类型，可能是NullableValueType。</remarks>
+        </member>
+        <member name="M:XPatchLib.MemberWrapper.InitType">
+            <summary>
+                初始化当前成员属性的类型信息。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.NodeType">
+            <summary>
+                指定节点的类型。
+            </summary>
+            <seealso cref="T:System.Xml.XmlNodeType" />
+        </member>
+        <member name="F:XPatchLib.NodeType.Attribute">
+            <summary>
+                属性 (例如， id='123' )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.CDATA">
+            <summary>
+                CDATA 节 (例如， &lt;![CDATA[my escaped text]]&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.Comment">
+            <summary>
+                注释 (例如， &lt;!-- my comment --&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.Document">
+            <summary>
+                文档提供的对象，作为文档树的根访问整个 XML 文档。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.DocumentFragment">
+            <summary>
+                将文档片段。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.DocumentType">
+            <summary>
+                文档类型声明中，由以下标记 (例如， &lt;!DOCTYPE...&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.Element">
+            <summary>
+                元素 (例如， &lt;item&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.EndElement">
+            <summary>
+                结束元素标记 (例如， &lt;/item&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.EndEntity">
+            <summary>
+                返回当 XmlReader 到达实体替换为调用的结果末尾 ResolveEntity。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.Entity">
+            <summary>
+                实体声明 (例如， &lt;!ENTITY...&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.EntityReference">
+            <summary>
+                对实体的引用 (例如， &amp;num; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.None">
+            <summary>
+                这由返回 XmlReader 如果 Read 不调用方法。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.Notation">
+            <summary>
+                在文档类型声明中的表示法 (例如， &lt;!NOTATION...&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.ProcessingInstruction">
+            <summary>
+                处理指令 (例如， &lt;?pi test?&gt; )。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.SignificantWhitespace">
+            <summary>
+                在混合内容模型或内的空格中标记之间空白区域 xml:space="preserve" 作用域。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.Text">
+            <summary>
+                节点的文本内容。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.Whitespace">
+            <summary>
+                标记之间的空白区域。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.NodeType.XmlDeclaration">
+            <summary>
+                XML 声明 (例如， &lt;?xml version='1.0'?&gt; )。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.PrimaryKeyAttribute">
+            <summary>
+                主键集合特性标记。
+            </summary>
+            <remarks>
+                用来标记一个对象由哪些属性组合成为主键，用以判断对象是否相等，并在生成增量文档时作为标记。
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyAttribute.#ctor(System.String[])">
+            <summary>
+                使用指定的主键名称初始化 <see cref="T:XPatchLib.PrimaryKeyAttribute" /> 类的新实例。
+            </summary>
+            <param name="pPrimaryKeys">
+                指定的主键名称。
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="pPrimaryKeys" /> 为空时。
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="pPrimaryKeys" /> 的长度小于1时。
+            </exception>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyAttribute.GetPrimaryKeys">
+            <summary>
+                获取主键类型名称。
+            </summary>
+            <returns>
+                返回主键名称数组。
+            </returns>
+        </member>
+        <member name="T:XPatchLib.PrimaryKeyException">
+            <summary>
+                主键定义异常。
+            </summary>
+            <remarks>
+                主键的数据类型只能够设置为基础类型。
+                <para>
+        基础类型包含 <see cref="T:System.String" />、<see cref="T:System.DateTime" />、<see cref="T:System.Decimal" />、<see cref="T:System.Guid" />、
+        <see cref="T:System.Drawing.Color" />、<see cref="T:System.Enum" />，或者<see cref="P:System.Type.IsPrimitive" /> == <b>true</b> 的类型。
+      </para><para>
+        当类型为<see cref="T:System.Nullable`1" />时，对 <b>T</b> 进行判断。
+      </para>
+            </remarks>
+            <example>
+                <para>
+        当类型定义主键特性时，被标记的主键类型只能是基础类型，否则会抛出异常。
+      </para><code language="c#" source="..\..\XPatchLib.Example\CSharp\Examples\PrimaryKeyException.cs" />
+            </example>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyException.#ctor(System.Type,System.String)">
+            <summary>
+                使用指定的类型及指定的主键名称创建主键定义异常的实例。
+            </summary>
+            <param name="pType">
+                异常的类型。
+            </param>
+            <param name="pKeyName">
+                异常的主键名称。
+            </param>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyException.#ctor(System.String)">
+            <summary>
+                使用指定的错误信息初始化 <see cref="T:XPatchLib.PrimaryKeyException" /> 类的新实例。
+            </summary>
+            <param name="pMessage">
+                描述错误的消息。
+            </param>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyException.#ctor">
+            <summary>
+                初始化 <see cref="T:XPatchLib.PrimaryKeyException" /> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyException.#ctor(System.String,System.Exception)">
+            <summary>
+                使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:XPatchLib.PrimaryKeyException" /> 类的新实例。
+            </summary>
+            <param name="pMessage">
+                描述错误的消息。
+            </param>
+            <param name="pInnerException">
+                导致当前异常的异常；如果未指定内部异常，则是一个 null 引用（在 Visual Basic 中为 Nothing）。
+            </param>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                用序列化数据初始化 <see cref="T:XPatchLib.PrimaryKeyException" /> 类的新实例。
+            </summary>
+            <param name="info">
+                <see cref="T:System.Runtime.Serialization.SerializationInfo" /> ，它存有有关所引发的异常的序列化对象数据。
+            </param>
+            <param name="context">
+                <see cref="T:System.Runtime.Serialization.StreamingContext" /> ，它包含有关源或目标的上下文信息。
+            </param>
+        </member>
+        <member name="P:XPatchLib.PrimaryKeyException.Message">
+            <summary>
+                获取描述当前异常的消息。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.PrimaryKeyException.PrimaryKeyName">
+            <summary>
+                获取异常的主键名称。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.PrimaryKeyException.ErrorType">
+            <summary>
+                获取异常的类型。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.PrimaryKeyException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                用关于异常的信息设置 <see cref="T:System.Runtime.Serialization.SerializationInfo" /> 。
+            </summary>
+            <param name="info">
+            </param>
+            <param name="context">
+            </param>
+        </member>
+        <member name="T:XPatchLib.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.Properties.Resources.Exp_String_AttributeMiss">
+            <summary>
+              查找类似 类型 {0} 上没有定义 &apos;{1}&apos; Attribute 。 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.Properties.Resources.Exp_String_PrimaryKey">
+            <summary>
+              查找类似 &apos;{0}&apos; 的 主键 {1} 设置异常。 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.ReadState">
+            <summary>
+                指定读取器的状态。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.ReadState.Closed">
+            <summary>
+                Close 调用方法。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.ReadState.EndOfFile">
+            <summary>
+                已成功到达文件末尾。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.ReadState.Error">
+            <summary>
+                将出现错误，以防止读取的操作继续进行。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.ReadState.Initial">
+            <summary>
+                Read 不调用方法。
+            </summary>
+        </member>
+        <member name="F:XPatchLib.ReadState.Interactive">
+            <summary>
+                Read 调用方法。 可以在读取器上调用其他方法。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.ReflectionUtils.GetFieldsToBeSerialized(System.Type,System.Type)">
+            <summary>
+            获取一个类型上需要序列化的属性或字段集合。
+            </summary>
+            <param name="pObjType">Type of the p object.</param>
+            <param name="pIngoreAttributeType">不序列化的特性类型定义。</param>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.ReflectionUtils.GetNullableValueType(System.Type)">
+            <summary>
+                获取Nullable类型的值类型。
+            </summary>
+            <param name="pType">
+            </param>
+            <returns>
+                <para> 当 <paramref name="pType" /> 是 <c> Nullable </c> 类型时，返回其中的值类型。 </para>
+                <para> 否则返回 <c> Null </c>。 </para>
+            </returns>
+        </member>
+        <member name="M:XPatchLib.ReflectionUtils.GetTypeFriendlyName(System.Type)">
+            <summary>
+                获取显示用的类型名称。
+            </summary>
+            <param name="pType">
+            </param>
+            <returns>
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                当 <paramref name="pType" /> 为 <c> null </c> 时。
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                当 <paramref name="pType" /> 是泛型类型，但是未能找到泛型类型的类型 时。
+            </exception>
+            <remarks>
+                <para> 泛型类型时使用 <c> _ </c> 拼接各个泛型参数类型的名称。 </para>
+                <para> 数组类型时使用 Array（数组维数）Of（数组元素类型的名称） 拼接各个泛型参数类型的名称。 </para>
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.ReflectionUtils.IsBasicType(System.Type)">
+            <summary>
+                检测类型是否为基础类型。
+            </summary>
+            <param name="pType">
+            </param>
+            <returns>
+            </returns>
+            <remarks>
+                <para> Nullable类型中的值类型是基础类型时，此泛型也是基础类型。 </para>
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.ReflectionUtils.IsIEnumerable(System.Type)">
+            <summary>
+                检测类型是否为公开枚举数。
+            </summary>
+            <param name="pType">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XPatchLib.ReflectionUtils.IsNullable(System.Type)">
+            <summary>
+                检测指定类型是否为 <c> Nullable </c>。
+            </summary>
+            <param name="pType">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XPatchLib.ReflectionUtils.TryGetIEnumerableGenericArgument(System.Type,System.Type@)">
+            <summary>
+                检测类型是否为公开枚举数。
+            </summary>
+            <param name="pType">
+            </param>
+            <param name="pSeqType">
+                泛型类型。
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:XPatchLib.DivideBase">
+            <summary>
+                对象比较产生增量内容结果的基础类。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.DivideBase.Divide(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。</returns>
+        </member>
+        <member name="M:XPatchLib.DivideBase.WriteKeyAttributes(XPatchLib.DivideAttachment)">
+            <summary>
+                根据参数 <paramref name="pAttach" /> 生成主键的Attribute。
+            </summary>
+            <param name="pAttach">The p attach.</param>
+        </member>
+        <member name="M:XPatchLib.DivideBase.WriteParentElementStart(XPatchLib.DivideAttachment)">
+            <summary>
+                写入父级节点开始标记
+            </summary>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+        </member>
+        <member name="M:XPatchLib.DivideBase.IsSetNull(System.Object,System.Object)">
+            <summary>
+                判断当前节点是否为 SetNull 操作。
+            </summary>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <returns>
+                当<paramref name="pOriObject" />不为 <c>null</c>，<paramref name="pRevObject" />为 <c>null</c> 时，返回 <c>true</c> ， 否则返回
+                <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideBase.DivideAction(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容的实际方法。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。</returns>
+        </member>
+        <member name="M:XPatchLib.DivideBase.#ctor(XPatchLib.ITextWriter,XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.DivideBase" /> 类的新实例。
+            </summary>
+            <param name="pWriter">写入器。</param>
+            <param name="pType">指定的类型。</param>
+            <exception cref="T:XPatchLib.PrimaryKeyException">当 <paramref name="pType" /> 的 <see cref="T:XPatchLib.PrimaryKeyAttribute" /> 定义异常时。</exception>
+            <exception cref="T:System.ArgumentNullException">当参数 <paramref name="pWriter" /> is null 时。</exception>
+        </member>
+        <member name="P:XPatchLib.DivideBase.Type">
+            <summary>
+                获取或设置当前正在处理的类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.DivideBase.ParentElementWrited">
+            <summary>
+                获取或设置父级节点内容是否已经被写入。
+            </summary>
+            <value>默认值： <c>false</c> 。</value>
+        </member>
+        <member name="F:XPatchLib.DivideBase.Writer">
+            <summary>
+                获取当前的写入器。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.DivideCore">
+            <summary>
+                增量内容产生入口类。
+            </summary>
+            <seealso cref="T:XPatchLib.DivideBase" />
+            <remarks>
+                此类是增量内容产生的入口类，由此类区分待产生增量内容的对象类型，调用不同的增量内容产生类。
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.DivideCore.Divide(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideCore.DivideAction(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容的实际方法。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideCore.#ctor(XPatchLib.ITextWriter,XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.DivideCore" /> 类的新实例。
+            </summary>
+            <param name="pWriter">写入器。</param>
+            <param name="pType">指定的类型。</param>
+        </member>
+        <member name="T:XPatchLib.DivideBasic">
+            <summary>
+                基础类型增量内容产生类。
+            </summary>
+            <seealso cref="T:XPatchLib.DivideBase" />
+        </member>
+        <member name="M:XPatchLib.DivideBasic.DivideAction(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容的实际方法。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideBasic.#ctor(XPatchLib.ITextWriter,XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.DivideBasic" /> 类的新实例。
+            </summary>
+            <param name="pWriter">写入器。</param>
+            <param name="pType">指定的类型。</param>
+        </member>
+        <member name="M:XPatchLib.DivideBasic.DivideAction(System.String,System.String,XPatchLib.DivideAttachment,XPatchLib.Action)">
+            <summary>
+                产生基础类型增量内容核心方法。
+            </summary>
+            <param name="pElementName">增量内容对象的名称。</param>
+            <param name="pElementValue">更新后的对象数据。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <param name="pAction">更新操作类型，默认为Edit。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideBasic.DivideAction``1(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生基础类型增量内容核心方法。
+            </summary>
+            <typeparam name="T">待产生增量内容的对象类型定义。</typeparam>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideBasic.TransToString``1(System.Object)">
+            <summary>
+                将待序列化的基础类型对象实例转换为可序列化的字符串。
+            </summary>
+            <typeparam name="T">待序列化的基础类型。</typeparam>
+            <param name="pObj">待序列化的基础类型对象的值。</param>
+            <returns>
+                转换成功返回转换后的字符串，否则返回 <see cref="F:System.String.Empty" /> 。
+            </returns>
+        </member>
+        <member name="T:XPatchLib.DivideIEnumerable">
+            <summary>
+                集合类型增量内容产生类。
+            </summary>
+            <seealso cref="T:XPatchLib.DivideBase" />
+        </member>
+        <member name="M:XPatchLib.DivideIEnumerable.DivideAction(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容的实际方法。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideIEnumerable.#ctor(XPatchLib.ITextWriter,XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.DivideIEnumerable" /> 类的新实例。
+            </summary>
+            <param name="pWriter">写入器。</param>
+            <param name="pType">指定的类型。</param>
+            <exception cref="T:XPatchLib.PrimaryKeyException">当 <paramref name="pType" /> 的 元素类型的 <see cref="T:XPatchLib.PrimaryKeyAttribute" /> 定义异常时。</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">当 <paramref name="pType" /> 上无法获取元素类型时。</exception>
+        </member>
+        <member name="P:XPatchLib.DivideIEnumerable.GenericArgumentPrimaryKeys">
+            <summary>
+                集合类型中元素的类型所标记的主键名称集合。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.DivideIEnumerable.GenericArgumentType">
+            <summary>
+                集合类型中元素的类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.DivideIEnumerable.GenericArgumentTypePrimaryKeyAttribute">
+            <summary>
+                集合类型中元素的类型所标记的主键特性。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.DivideIEnumerable.TryGetAddedItems(XPatchLib.KeyValuesObject[],XPatchLib.KeyValuesObject[],System.Collections.Generic.IEnumerable{XPatchLib.KeyValuesObject}@)">
+            <summary>
+                尝试比较原始集合和更新后的集合，找到被添加的元素集合。
+            </summary>
+            <param name="pOriItems">原始集合。</param>
+            <param name="pRevItems">更新后的集合。</param>
+            <param name="pFoundItems">找到的被添加的元素集合。</param>
+            <returns>
+                当找到一个或多个被添加的元素时，返回 true 否则 返回 false 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideIEnumerable.TryGetEditedItems(XPatchLib.KeyValuesObject[],XPatchLib.KeyValuesObject[],System.Collections.Generic.IEnumerable{XPatchLib.KeyValuesObject}@)">
+            <summary>
+                尝试比较原始集合和更新后的集合，找到可能被修改的元素集合。
+            </summary>
+            <param name="pOriItems">原始集合。</param>
+            <param name="pRevItems">更新后的集合。</param>
+            <param name="pFoundItems">找到的被修改的元素集合。</param>
+            <returns>
+                当找到一个或多个被修改的元素时，返回 true 否则 返回 false 。
+            </returns>
+            <remarks>
+                返回的集合是即存在于原始集合又存在于更新后集合的对象。
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.DivideIEnumerable.TryGetRemovedItems(XPatchLib.KeyValuesObject[],XPatchLib.KeyValuesObject[],System.Collections.Generic.IEnumerable{XPatchLib.KeyValuesObject}@)">
+            <summary>
+                尝试比较原始集合和更新后的集合，找到被删除的元素集合。
+            </summary>
+            <param name="pOriItems">原始集合。</param>
+            <param name="pRevItems">更新后的集合。</param>
+            <param name="pFoundItems">找到的被删除的元素集合。</param>
+            <returns>
+                当找到一个或多个被删除的元素时，返回 true 否则 返回 false 。
+            </returns>
+        </member>
+        <member name="T:XPatchLib.DivideObject">
+            <summary>
+                复杂类型增量内容产生类。
+            </summary>
+            <seealso cref="T:XPatchLib.DivideBase" />
+        </member>
+        <member name="M:XPatchLib.DivideObject.DivideAction(System.String,System.Object,System.Object,XPatchLib.DivideAttachment)">
+            <summary>
+                产生增量内容的实际方法。
+            </summary>
+            <param name="pName">增量内容对象的名称。</param>
+            <param name="pOriObject">原始对象。</param>
+            <param name="pRevObject">更新后的对象。</param>
+            <param name="pAttach">生成增量时可能用到的附件。</param>
+            <returns>
+                返回是否成功写入内容。如果成功写入返回 <c>true</c> ，否则返回 <c>false</c> 。
+            </returns>
+        </member>
+        <member name="M:XPatchLib.DivideObject.#ctor(XPatchLib.ITextWriter,XPatchLib.TypeExtend)">
+            <summary>
+                使用指定的类型初始化 <see cref="T:XPatchLib.DivideObject" /> 类的新实例。
+            </summary>
+            <param name="pWriter">写入器。</param>
+            <param name="pType">指定的类型。</param>
+        </member>
+        <member name="T:XPatchLib.TypeExtend">
+            <summary>
+                Type扩展
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.ParentType">
+            <summary>
+                获取父级类型定义。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.CustomAttributes">
+            <summary>
+                获取该类型的自定义Attributes。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.DefaultValue">
+            <summary>
+                获取该类型的默认值。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.FieldsToBeSerialized">
+            <summary>
+                获取该类型下可以被序列化的字段。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.IsBasicType">
+            <summary>
+                获取是否为基础类型。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.KeyArgumentType">
+            <summary>
+                只有当是字典类型或KeyValue类型时才会有值
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.OriType">
+            <summary>
+                获取原始类型定义。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.TypeExtend.ValueArgumentType">
+            <summary>
+                只有当是字典类型或KeyValue类型时才会有值
+            </summary>
+        </member>
+        <member name="M:XPatchLib.TypeExtend.CheckPrimaryKeyAttribute(System.Boolean,System.String@)">
+            <summary>
+                检测类型上的PrimaryKeyAttribute特性是否符合要求。
+            </summary>
+            <param name="pCheckAttributeExists">是否强制要求类型必须设定PrimaryKeyAttribute特性。</param>
+            <param name="pErrorPrimaryKeyName">有问题的主键属性名称。</param>
+            <returns></returns>
+        </member>
+        <member name="T:XPatchLib.JsonTextWriter">
+            <summary>
+                Json写入器。
+            </summary>
+            <seealso cref="T:XPatchLib.ITextWriter" />
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.#ctor(System.IO.TextWriter)">
+            <summary>
+                以指定的 <paramref name="pWriter" /> 实例创建 <see cref="T:XPatchLib.JsonTextWriter" /> 类型实例。
+            </summary>
+            <param name="pWriter">指定的 Json 编写器。</param>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteStartDocument">
+            <summary>
+                写入文档开始标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteEndDocument">
+            <summary>
+                写入文档结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.Flush">
+            <summary>
+                将缓冲区中的所有内容刷新到基础流，并同时刷新基础流。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteStartObject(System.String)">
+            <summary>
+                写入对象开始标记。
+            </summary>
+            <param name="pName">对象名称。</param>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteEndObject">
+            <summary>
+                写入对象结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteAttribute(System.String,System.String)">
+            <summary>
+                写入特性。
+            </summary>
+            <param name="pName">特性名称。</param>
+            <param name="pValue">特性值。</param>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteProperty(System.String,System.String)">
+            <summary>
+                写入属性。
+            </summary>
+            <param name="pName">属性名称。</param>
+            <param name="pValue">属性值。</param>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteStartArray(System.String)">
+            <summary>
+                写入列表类型对象开始标记。
+            </summary>
+            <param name="pName">列表类型对象实例名称</param>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteEndArray">
+            <summary>
+                写入列表对象结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteStartProperty(System.String)">
+            <summary>
+                写入属性开始标记。
+            </summary>
+            <param name="pName">属性名称。</param>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteEndProperty">
+            <summary>
+                写入属性结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.WriteValue(System.String)">
+            <summary>
+                写入文本。
+            </summary>
+            <param name="pValue">待写入的文本。</param>
+        </member>
+        <member name="P:XPatchLib.JsonTextWriter.Mode">
+            <summary>
+                获取或设置在字符串与 <see cref="T:System.DateTime" /> 之间转换时，如何处理时间值。
+            </summary>
+            <value>默认值 <see cref="F:XPatchLib.DateTimeSerializationMode.RoundtripKind" /> 。</value>
+        </member>
+        <member name="P:XPatchLib.JsonTextWriter.SerializeDefalutValue">
+            <summary>
+                获取或设置是否序列化默认值。
+            </summary>
+            <value>默认值 <c>false</c> 。</value>
+        </member>
+        <member name="P:XPatchLib.JsonTextWriter.Encoding">
+            <summary>
+                获取或设置要使用的文本编码的类型。
+            </summary>
+            <value>默认值 <see cref="P:System.Text.Encoding.UTF8" /> 。</value>
+        </member>
+        <member name="P:XPatchLib.JsonTextWriter.Formatting">
+            <summary>
+                获取或设置如何对输出进行格式设置。
+            </summary>
+            <value><see cref="P:XPatchLib.JsonTextWriter.Formatting" /> 值之一。 默认值是 <see cref="F:XPatchLib.Formatting.None" /> （无特殊格式）。</value>
+        </member>
+        <member name="P:XPatchLib.JsonTextWriter.IndentChars">
+            <summary>
+                获取或设置用于缩进时用于转换的字符 <see cref="P:XPatchLib.JsonTextWriter.Formatting" /> 设置为 <see cref="F:XPatchLib.Formatting.Indented" />。
+            </summary>
+            <value>默认值是 空格 。</value>
+        </member>
+        <member name="M:XPatchLib.JsonTextWriter.Dispose(System.Boolean)">
+            <summary>
+                执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.XmlSerializeSetting">
+            <summary>
+                XML类型写入器的默认设置。
+            </summary>
+            <seealso cref="T:XPatchLib.ISerializeSetting" />
+        </member>
+        <member name="E:XPatchLib.XmlSerializeSetting.PropertyChanged">
+            <summary>
+                在更改属性值时发生。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.XmlSerializeSetting.Mode">
+            <summary>
+                获取或设置在字符串与 <see cref="T:System.DateTime" /> 之间转换时，如何处理时间值。
+            </summary>
+            <value>默认为 <see cref="F:XPatchLib.DateTimeSerializationMode.RoundtripKind" />。</value>
+        </member>
+        <member name="P:XPatchLib.XmlSerializeSetting.SerializeDefalutValue">
+            <summary>
+                获取或设置是否序列化默认值。
+            </summary>
+            <value>默认为 <c>false</c>。</value>
+        </member>
+        <member name="P:XPatchLib.XmlSerializeSetting.ActionName">
+            <summary>
+                获取或设置序列化/反序列化时，文本中标记 '<b>动作</b>' 的文本。
+            </summary>
+            <value>
+                默认值是 "<b>Action</b>" 。
+            </value>
+            <exception cref="T:System.ArgumentNullException">当设置值是传入 <b>null</b> 时。</exception>
+            <exception cref="T:System.ArgumentException">当设置值为空时。</exception>
+        </member>
+        <member name="T:XPatchLib.XmlTextReader">
+            <summary>
+                表示提供对 XML 数据进行快速、非缓存、只进访问的读取器。
+            </summary>
+            <seealso cref="T:XPatchLib.ITextReader" />
+        </member>
+        <member name="M:XPatchLib.XmlTextReader.#ctor(System.Xml.XmlReader)">
+            <summary>
+                以指定的 <paramref name="pReader" /> 实例创建 <see cref="T:XPatchLib.XmlTextReader" /> 类型实例。
+            </summary>
+            <param name="pReader">指定的 XML 读取器。</param>
+        </member>
+        <member name="M:XPatchLib.XmlTextReader.Dispose">
+            <summary>
+            执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextReader.Read">
+            <summary>
+                从流中读取下一个节点。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XPatchLib.XmlTextReader.ReadState">
+            <summary>
+                获取读取器的状态。
+            </summary>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:XPatchLib.XmlTextReader.ReadString">
+            <summary>
+                将元素或文本节点的内容当做字符串读取。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XPatchLib.XmlTextReader.EOF">
+            <summary>
+                获取一个值，该值指示此读取器是否定位在流的结尾。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.XmlTextReader.Name">
+            <summary>
+                获取当前节点的限定名。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.XmlTextReader.Value">
+            <summary>
+                获取当前节点的文本值。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.XmlTextReader.AttributeCount">
+            <summary>
+                获取当前节点上的属性数。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextReader.MoveToNextAttribute">
+            <summary>
+                移动到下一个属性。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XPatchLib.XmlTextReader.MoveToElement">
+            <summary>
+                移动到包含当前属性节点的元素。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XPatchLib.XmlTextReader.NodeType">
+            <summary>
+                获取当前节点的类型。
+            </summary>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:XPatchLib.XmlTextReader.Dispose(System.Boolean)">
+            <summary>
+                执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.XmlTextReader.Setting">
+            <summary>
+            获取或设置读取器设置。
+            </summary>
+            <value>默认返回以无参数构造函数创建的<see cref="T:XPatchLib.XmlSerializeSetting"/>实例。</value>
+        </member>
+        <member name="T:XPatchLib.XmlTextWriter">
+            <summary>
+                表示提供快速、非缓存、只进方法的写入器，该方法生成包含 XML 数据（这些数据符合 W3C 可扩展标记语言 (XML) 1.0 和“XML 命名空间”建议）的流或文件。
+            </summary>
+            <seealso cref="T:XPatchLib.ITextWriter" />
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.#ctor(System.Xml.XmlWriter)">
+            <summary>
+                以指定的 <paramref name="pWriter" /> 实例创建 <see cref="T:XPatchLib.XmlTextWriter" /> 类型实例。
+            </summary>
+            <param name="pWriter">指定的 XML 编写器。</param>
+            <remarks>
+                <para>
+                    默认在字符串与 System.DateTime 之间转换时，转换时应保留时区信息。
+                </para>
+                <para> 默认不序列化默认值。 </para>
+            </remarks>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteStartDocument">
+            <summary>
+                写入文档开始标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteEndDocument">
+            <summary>
+                写入文档结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.Flush">
+            <summary>
+                将缓冲区中的所有内容刷新到基础流，并同时刷新基础流。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteStartObject(System.String)">
+            <summary>
+                写入对象开始标记。
+            </summary>
+            <param name="pName">对象名称。</param>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteEndObject">
+            <summary>
+                写入对象结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteAttribute(System.String,System.String)">
+            <summary>
+                写入特性。
+            </summary>
+            <param name="pName">特性名称。</param>
+            <param name="pValue">特性值。</param>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteProperty(System.String,System.String)">
+            <summary>
+                写入属性。
+            </summary>
+            <param name="pName">属性名称。</param>
+            <param name="pValue">属性值。</param>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteStartArray(System.String)">
+            <summary>
+                写入列表类型对象开始标记。
+            </summary>
+            <param name="pName">列表类型对象实例名称</param>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteEndArray">
+            <summary>
+                写入列表对象结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteStartProperty(System.String)">
+            <summary>
+                写入属性开始标记。
+            </summary>
+            <param name="pName">属性名称。</param>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteEndProperty">
+            <summary>
+                写入属性结束标记。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.WriteValue(System.String)">
+            <summary>
+                写入文本。
+            </summary>
+            <param name="pValue">待写入的文本。</param>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.Dispose">
+            <summary>
+                执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="P:XPatchLib.XmlTextWriter.Setting">
+            <summary>
+                获取或设置写入器设置。
+            </summary>
+            <value>默认返回以构造函数中传入的<see cref="T:System.Xml.XmlWriter" />作为参数创建的<see cref="T:XPatchLib.XmlSerializeSetting" />实例。</value>
+        </member>
+        <member name="P:XPatchLib.XmlTextWriter.IgnoreAttributeType">
+            <summary>
+                获取指示 <see cref="T:XPatchLib.Serializer" /> 方法 <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" /> 进行序列化的公共字段或公共读/写属性值。
+            </summary>
+            <remarks>
+                用于控制如何 <see cref="T:XPatchLib.Serializer" /> 方法 <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" /> 序列化对象。
+            </remarks>
+            <value>
+                <see cref="T:System.Xml.Serialization.XmlIgnoreAttribute" />
+            </value>
+        </member>
+        <member name="M:XPatchLib.XmlTextWriter.Dispose(System.Boolean)">
+            <summary>
+                执行与释放或重置非托管资源相关的应用程序定义的任务。
+            </summary>
+        </member>
+        <member name="T:XPatchLib.XmlWriterHelper">
+            <summary>
+                XML写入器帮助类。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.XmlWriterHelper.WriteActionAttribute(XPatchLib.ITextWriter,XPatchLib.Action)">
+            <summary>
+                写入 Action 特性。
+            </summary>
+            <param name="pWriter">XML写入器。</param>
+            <param name="pAction">带写入的Action标记。</param>
+            <remarks>
+                当 <paramref name="pAction" />==<see cref="T:XPatchLib.Action" />时不写入。
+            </remarks>
+        </member>
+        <member name="T:XPatchLib.Serializer">
+            <summary>
+                增量内容序列化器。
+            </summary>
+            <remarks>
+                <para>
+                    比较同一对象类型的两个的实例间的差异内容，并产生增量的内容，使用指定的 文档写入器 <see cref="T:XPatchLib.ITextWriter" /> 实例将增量内容写入文档，
+                    也可以将增量的文档通过制定的文档读取器 <see cref="T:XPatchLib.ITextReader" /> 实例反序列化并附加至原始的对象实例上。
+                </para>
+                <para>
+        使用 Divide 方法将原始对象与更新后对象之间差异内容的的公共字段和读/写属性转换为 增量数据。它不转换方法、索引器、私有字段或只读属性。
+      </para>
+                <para>
+                    使用 Combine 方法将读取增量内容，并将增量数据与待合并的原始对象的数据合并，产生新的对象实例。（也可以使用重载方法，直接在原始对象上附加数据，这样将不会产生新的对象实例）
+                </para>
+            </remarks>
+            <example>
+                <code language="c#" source="..\..\XPatchLib.Example\CSharp\Examples\ComplexObjCombineAndDivide.cs" /><para>
+        序列化增量内容的 输出如下所示：
+      </para><code language="xml" title="patch.xml">
+        <![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<PurchaseOrder>
+  <OrderedItems>
+    <OrderedItem Action="Remove" ItemName="Widget S" />
+    <OrderedItem Action="Add">
+      <Description>Big widget</Description>
+      <ItemName>Widget B</ItemName>
+      <Quantity>5</Quantity>
+      <UnitPrice>26.78</UnitPrice>
+    </OrderedItem>
+  </OrderedItems>
+</PurchaseOrder>
+]]>
+      </code><para>
+        输出内容如下：
+      </para><code language="none">
+        <![CDATA[
+OldOrder:
+OrderDate: 2017年3月12日
+Ship To:
+        Teresa Atkinson
+        1 Main St.
+        AnyTown
+        WA
+        00000
+
+Items to be shipped:
+        Widget S        Small widget    5.23    3       15.69
+
+Subtotal:       15.69
+Shipping:       12.51
+Total:  28.20
+----------
+NewOrder:
+OrderDate: 2017年3月12日
+Ship To:
+        Teresa Atkinson
+        1 Main St.
+        AnyTown
+        WA
+        00000
+
+Items to be shipped:
+        Widget B        Big widget      26.78   5       133.90
+
+Subtotal:       133.90
+Shipping:       12.51
+Total:  146.41
+]]>
+      </code>
+            </example>
+        </member>
+        <member name="F:XPatchLib.Serializer._initialType">
+            <summary>
+            初始类型。
+            </summary>
+        </member>
+        <member name="M:XPatchLib.Serializer.#ctor(System.Type)">
+            <summary>
+                初始化 <c> Serializer </c> 类的新实例。
+            </summary>
+            <param name="pType">此 <see cref="T:XPatchLib.Serializer" /> 可序列化的对象的类型。</param>
+        </member>
+        <member name="M:XPatchLib.Serializer.Combine(XPatchLib.ITextReader,System.Object)">
+            <summary>
+                反序列化指定 <see cref="T:XPatchLib.ITextReader" /> 包含的增量文档，并与 原始对象 进行数据合并。
+            </summary>
+            <param name="pReader">
+                <param class="Serializer" paramtype="ITextReader" method="Combine" paramname="pReader">
+      包含要反序列化的增量文档的 <see cref="T:XPatchLib.ITextReader" /> 实例。
+    </param>
+            </param>
+            <param name="pOriValue">
+                <param class="Serializer" paramtype="Object" method="Combine" paramname="pOriValue">
+      待进行数据合并的原始对象。
+    </param>
+            </param>
+            <returns>
+                <return class="Serializer" method="Combine">
+      正被反序列化及合并后的 <see cref="T:System.Object" />。
+    </return>
+            </returns>
+            <remarks>
+                <para>
+                    <b> 默认不覆盖 <paramref name="pOriValue" /> 对象实例。 </b>
+                </para>
+                <para>
+        在反序列化及合并之前，必须使用待合并的对象的类型构造一个 <see cref="T:XPatchLib.Serializer" /> 。
+      </para>
+            </remarks>
+            <example>
+                <para>
+        下面的示例使用 <see cref="T:XPatchLib.XmlTextReader" /> 对象反序列化增量内容，并附加至原始对象。
+      </para><code language="c#" source="..\..\XPatchLib.Example\CSharp\Examples\Combine.cs" /><code language="xml" title="patch.xml" source="..\..\XPatchLib.Example\xmls\CombineExamplePatch.xml" /><para>
+        输出内容如下：
+      </para><code language="none">
+        <![CDATA[
+OldInstance:
+Widgt
+Big Widget
+4.7
+0
+21170186
+-----
+NewInstance:
+Widgt
+Small Widget
+2.30
+10
+13134304
+-----
+]]>
+      </code>
+            </example>
+            <seealso cref="M:XPatchLib.Serializer.Combine(XPatchLib.ITextReader,System.Object,System.Boolean)" />
+        </member>
+        <member name="M:XPatchLib.Serializer.Combine(XPatchLib.ITextReader,System.Object,System.Boolean)">
+            <summary>
+                以可指定是否覆盖原始对象的方式反序列化指定 <see cref="T:XPatchLib.ITextReader" /> 包含的增量文档，并与 原始对象 进行数据合并。
+            </summary>
+            <param name="pReader">
+                <param class="Serializer" paramtype="ITextReader" method="Combine" paramname="pReader">
+      包含要反序列化的增量文档的 <see cref="T:XPatchLib.ITextReader" /> 实例。
+    </param>
+            </param>
+            <param name="pOriValue">
+                <param class="Serializer" paramtype="Object" method="Combine" paramname="pOriValue">
+      待进行数据合并的原始对象。
+    </param>
+            </param>
+            <param name="pOverride">
+                <param class="Serializer" paramtype="bool" method="Combine" paramname="pOverride">
+      是否对 <paramref name="pOriValue" /> 对象实例进行直接修改。
+      <para>如果为 <b>true</b> ，那么附加增量数据时将直接更新 <paramref name="pOriValue" /> 对象实例。（性能更加，在无需保留原始数据实例的情况下，建议使用此方式）</para>
+      <para>相反，如果为 <b>false</b> ，那么会在附加数据前根据 <paramref name="pOriValue" /> 创建新的对象实例 ，再在新的对象实例上附加增量数据。(适用于不希望原始数据被变更的情况)</para>
+    </param>
+            </param>
+            <returns>
+                <return class="Serializer" method="Combine">
+      正被反序列化及合并后的 <see cref="T:System.Object" />。
+    </return>
+            </returns>
+            <remarks>
+                <para>
+        在反序列化及合并之前，必须使用待合并的对象的类型构造一个 <see cref="T:XPatchLib.Serializer" /> 。
+      </para>
+            </remarks>
+            <example>
+                <para>
+        下面的示例使用 <see cref="T:XPatchLib.XmlTextReader" /> 对象反序列化增量内容，并附加至原始对象。
+      </para><code language="c#" source="..\..\XPatchLib.Example\CSharp\Examples\Combine.cs" /><code language="xml" title="patch.xml" source="..\..\XPatchLib.Example\xmls\CombineExamplePatch.xml" /><para>
+        输出内容如下：
+      </para><code language="none">
+        <![CDATA[
+OldInstance:
+Widgt
+Big Widget
+4.7
+0
+21170186
+-----
+NewInstance:
+Widgt
+Small Widget
+2.30
+10
+13134304
+-----
+]]>
+      </code>
+            </example>
+            <seealso cref="M:XPatchLib.Serializer.Combine(XPatchLib.ITextReader,System.Object)" />
+        </member>
+        <member name="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)">
+            <summary>
+                使用指定的 <see cref="T:XPatchLib.ITextWriter" /> 序列化指定的 原始对象 <paramref name="pOriValue" /> 与 更新对象 <paramref name="pRevValue" />
+                间的增量内容。
+            </summary>
+            <param name="pWriter">
+                <param class="Serializer" paramtype="ITextWriter" method="Divide" paramname="pWriter">
+      用于编写增量文档的 <see cref="T:XPatchLib.ITextWriter" /> 实例。
+    </param>
+            </param>
+            <param name="pOriValue">
+                <param class="Serializer" paramtype="Object" method="Divide" paramname="pOriValue">
+      原始对象实例。
+    </param>
+            </param>
+            <param name="pRevValue">
+                <param class="Serializer" paramtype="Object" method="Divide" paramname="pRevValue">
+      更新后对象实例。
+    </param>
+            </param>
+            <remarks>
+                <para>
+        使用 Divide 方法将原始对象与更新后对象之间差异内容的的公共字段和读/写属性转换为 增量数据。它不转换方法、索引器、私有字段或只读属性。
+      </para>
+            </remarks>
+            <example>
+                <para>
+        下面的示例使用 <see cref="T:XPatchLib.XmlTextWriter" /> 序列化指定的 原始对象 与 更新对象 间的增量内容。
+      </para><code language="c#" source="..\..\XPatchLib.Example\CSharp\Examples\Divide.cs" /><para>
+        输出内容如下：
+      </para><code language="xml">
+        <![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<OrderedItem>
+  <Description>Big Widget</Description>
+  <LineTotal>117.0</LineTotal>
+  <Quantity>15</Quantity>
+  <UnitPrice>7.8</UnitPrice>
+</OrderedItem>]]>
+      </code>
+            </example>
+        </member>
+        <member name="M:XPatchLib.Serializer.RegisterTypes(System.Collections.Generic.IDictionary{System.Type,System.String[]})">
+            <summary>
+                向 <see cref="T:XPatchLib.Serializer" /> 注册类型与主键集合的键值对集合。
+            </summary>
+            <param name="pTypes">
+                类型与主键集合的键值对集合。
+            </param>
+            <remarks>
+                在无法修改类型定义，为其增加或修改 <see cref="T:XPatchLib.PrimaryKeyAttribute" /> 的情况下， 可以在调用
+                <c>
+                    Divide
+                </c>
+                或 <c> Combine </c> 方法前，调用此方法，传入需要修改的Type及与其对应的主键名称集合。 系统在处理时会按照传入的设置进行处理。
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+                当参数 <paramref name="pTypes" /> is null 时。
+            </exception>
+            <example>
+                <para>
+        下面的示例使用 RegisterTypes 方法向 <see cref="T:XPatchLib.Serializer" /> 注册待处理的类型的主键信息 。
+      </para><code language="c#" source="..\..\XPatchLib.Example\CSharp\Examples\RegisterTypes.cs" /><para>
+        输出内容如下：
+      </para><code language="xml">
+        <![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<List_OrderedItem>
+  <OrderedItem>
+    <Quantity>5</Quantity>
+  </OrderedItem>
+</List_OrderedItem>]]>
+      </code>
+            </example>
+        </member>
+    </members>
+</doc>
