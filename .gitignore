@@ -1,0 +1,7 @@
+src/Bin/XPatchLib.Json.dll
+src/XPatchLib.Json/bin/Debug/XPatchLib.Json.dll
+src/XPatchLib.Json/bin/Debug/XPatchLib.Json.XML
+*.pdb
+src/XPatchLib.Json/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/src/XPatchLib.Json/obj/Debug
+/XPatchLib.Json.Output/Debug
