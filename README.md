@@ -1,16 +1,16 @@
-# XPatchLib - .Net À©Õ¹ For Json
+# XPatchLib.Net æ‰©å±• For Json
 
-±¾ÏîÄ¿Ö¼ÔÚ´´½¨ XPatchLib.Net µÄÕë¶ÔJson¸ñÊ½µÄÀ©Õ¹°ü¡£Ê¹ÓÃ±¾À©Õ¹°üµÄÄÚÈİ¿ÉÒÔÊ¹³ÌĞòÔÚÊ¹ÓÃXPatchLib.NetÊ±Ö§³ÖĞòÁĞ»¯/·´ĞòÁĞ»¯Json¸ñÊ½ÄÚÈİ¡£
+æœ¬é¡¹ç›®æ—¨åœ¨åˆ›å»º XPatchLib.Net çš„é’ˆå¯¹Jsonæ ¼å¼çš„æ‰©å±•åŒ…ã€‚ä½¿ç”¨æœ¬æ‰©å±•åŒ…çš„å†…å®¹å¯ä»¥ä½¿ç¨‹åºåœ¨ä½¿ç”¨XPatchLib.Netæ—¶æ”¯æŒåºåˆ—åŒ–/ååºåˆ—åŒ–Jsonæ ¼å¼å†…å®¹ã€‚
 
-## Ö§³Ö°æ±¾
+## æ”¯æŒç‰ˆæœ¬
 
 .NET 4.0
 
-## ±àÒë¼°ÒıÓÃ
+## ç¼–è¯‘åŠå¼•ç”¨
 
-Ê¹ÓÃ Visual Studio 2015 ¼°ÒÔÉÏ°æ±¾´ò¿ª src/XPatchLib.Net For Json 2015.sln ½â¾ö·½°¸¡£
+ä½¿ç”¨ Visual Studio 2015 åŠä»¥ä¸Šç‰ˆæœ¬æ‰“å¼€ src/XPatchLib.Net For Json 2015.sln è§£å†³æ–¹æ¡ˆã€‚
 
-±¾ÏîÄ¿Ê¹ÓÃNuGetÒıÓÃÁËÈçÏÂ³ÌĞò°ü£º
+æœ¬é¡¹ç›®ä½¿ç”¨NuGetå¼•ç”¨äº†å¦‚ä¸‹ç¨‹åºåŒ…ï¼š
 
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/10.0.1/) 10.0.0.0 [Github](https://github.com/JamesNK/Newtonsoft.Json)
 * [XPatchLib](https://www.nuget.org/packages/XPatchLib/2.0.0.22/) 2.0.0.33 [Github](https://github.com/GuQiangJS/XPatchLib.Net)
