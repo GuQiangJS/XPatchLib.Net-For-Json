@@ -2,6 +2,7 @@
 // Licensed under the LGPL-3.0 license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json;
 
@@ -13,7 +14,16 @@ namespace XPatchLib.Json
     /// <seealso cref="ITextWriter" />
     public class JsonTextWriter : ITextWriter
     {
+        protected enum JsonTextWriterState
+        {
+            Object,
+            Array,
+            Property
+        }
+
         private JsonWriter _writer;
+
+        private Stack<JsonTextWriterState> _writerState = new Stack<JsonTextWriterState>();
 
         /// <summary>
         ///     以指定的 <paramref name="pWriter" /> 实例创建 <see cref="JsonTextWriter" /> 类型实例。
@@ -83,9 +93,14 @@ namespace XPatchLib.Json
             if (_writer.WriteState == WriteState.Start)
             {
                 _writer.WriteStartObject();
+                _writerState.Push(JsonTextWriterState.Object);
 #if DEBUG
                 Debug.WriteLine(string.Format("WriteStartObject '{0}'.", pName));
 #endif
+            }
+            else
+            {
+                WriteStartProperty(pName);
             }
         }
 
@@ -94,6 +109,7 @@ namespace XPatchLib.Json
         {
             if (_writer.WriteState == WriteState.Start)
             {
+
                 _writer.WriteEndObject();
 #if DEBUG
                 Debug.WriteLine("WriteEndObject.");
@@ -129,15 +145,26 @@ namespace XPatchLib.Json
         /// <param name="pName">属性名称。</param>
         public void WriteStartProperty(string pName)
         {
-            _writer.WritePropertyName(pName);
+            if (_writer.WriteState != WriteState.Array)
+            {
+                _writer.WritePropertyName(pName);
+                _writerState.Push(JsonTextWriterState.Property);
 #if DEBUG
-            Debug.WriteLine(string.Format("WriteStartProperty '{0}'.", pName));
+                Debug.WriteLine(string.Format("WriteStartProperty '{0}'.", pName));
 #endif
+            }
         }
 
         /// <summary>写入属性结束标记。</summary>
         public void WriteEndProperty()
         {
+            if (_writerState.Peek() == JsonTextWriterState.Property)
+            {
+                _writerState.Pop();
+#if DEBUG
+                Debug.WriteLine("WriteEndProperty.");
+#endif
+            }
         }
 
         /// <summary>
@@ -146,8 +173,9 @@ namespace XPatchLib.Json
         /// </summary>
         public void WriteStartArray(string pName)
         {
-            _writer.WriteStartArray();
             _writer.WritePropertyName(pName);
+            _writer.WriteStartArray();
+            _writerState.Push(JsonTextWriterState.Array);
 #if DEBUG
             Debug.WriteLine(string.Format("WriteStartArray '{0}'.", pName));
 #endif
@@ -156,10 +184,14 @@ namespace XPatchLib.Json
         /// <summary>写入列表对象结束标记。</summary>
         public void WriteEndArray()
         {
-            _writer.WriteEndArray();
+            if (_writerState.Peek() == JsonTextWriterState.Array)
+            {
+                _writerState.Pop();
+                _writer.WriteEndArray();
 #if DEBUG
-            Debug.WriteLine("WriteEndArray.");
+                Debug.WriteLine("WriteEndArray.");
 #endif
+            }
         }
 
         /// <summary>写入文本。</summary>

@@ -12,13 +12,13 @@ namespace XPatchLib.Json.UnitTest
         [TestMethod]
         public void SimpleJsonWriteTest()
         {
-            var context = "{\"Active\":\"true\",\"CreatedDate\":\"2013-01-20T00:00:00Z\",\"Email\":\"james@example.com\",\"Roles\":[\"User\",\"Admin\"]}";
+            var context = "{\"Active\":\"true\",\"CreatedDate\":\"2013-01-20T00:00:00Z\",\"Email\":\"xpatchlib@example.com\",\"Roles\":[\"User\",\"Admin\"]}";
 
             Account account1 = new Account();
 
             Account account2 = new Account
             {
-                Email = "james@example.com",
+                Email = "xpatchlib@example.com",
                 Active = true,
                 CreatedDate = new DateTime(2013, 1, 20, 0, 0, 0, DateTimeKind.Utc),
                 Roles = new List<string>
