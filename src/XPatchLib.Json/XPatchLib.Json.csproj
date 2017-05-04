@@ -47,9 +47,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="XPatchLib, Version=2.0.0.33, Culture=neutral, PublicKeyToken=ba48c1962d234d2a, processorArchitecture=MSIL">
+    <Reference Include="XPatchLib, Version=2.0.0.95, Culture=neutral, PublicKeyToken=ba48c1962d234d2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\XPatchLib.Net\src\Bin\XPatchLib.dll</HintPath>
+      <HintPath>..\..\..\XPatchLib.Net\XPatchLib.Output\Debug\XPatchLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

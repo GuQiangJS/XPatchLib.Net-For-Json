@@ -1,15 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿// Copyright © 2013-2017 - GuQiang
+// Licensed under the LGPL-3.0 license. See LICENSE file in the project root for full license information.
+
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace XPatchLib.Json.UnitTest
 {
     public abstract class TestBase
     {
-        protected virtual void TraceResult(string testMethodName,string testResult)
+        protected virtual void TraceResult(string testMethodName, string testResult)
         {
             Trace.WriteLine("**************");
             Trace.WriteLine(testMethodName);
@@ -18,10 +17,10 @@ namespace XPatchLib.Json.UnitTest
             Trace.WriteLine("**************");
         }
 
-        public void AssertEqual(string expected, string actual)
+        public void AssertStringEqual(string expected, string actual)
         {
             Assert.AreEqual(expected, actual);
-            TraceResult(new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name, actual.ToString());
+            TraceResult(new StackTrace().GetFrame(1).GetMethod().Name, actual);
         }
     }
 }

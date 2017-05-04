@@ -59,6 +59,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestBase.cs" />
+    <Compile Include="TestClass\Account.cs" />
+    <Compile Include="TestClass\Person.cs" />
     <Compile Include="TestJsonWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

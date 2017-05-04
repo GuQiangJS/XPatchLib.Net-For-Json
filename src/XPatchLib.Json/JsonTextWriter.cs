@@ -18,7 +18,9 @@ namespace XPatchLib.Json
         {
             Object,
             Array,
-            Property
+            ArrayItem,
+            Property,
+            Document
         }
 
         private JsonWriter _writer;
@@ -74,10 +76,26 @@ namespace XPatchLib.Json
         public void WriteStartDocument()
         {
         }
+        void WriteStartDocumentCore()
+        {
+            _writer.WriteStartObject();
+            _writerState.Push(JsonTextWriterState.Document);
+#if DEBUG
+            Debug.WriteLine("WriteStartDocument.");
+#endif
+        }
 
         /// <summary>写入文档结束标记。</summary>
         public void WriteEndDocument()
         {
+            if (_writerState.Count > 0 && _writerState.Peek() == JsonTextWriterState.Document)
+            {
+                _writerState.Pop();
+                _writer.WriteEndObject();
+#if DEBUG
+                Debug.WriteLine("WriteEndDocument.");
+#endif
+            }
         }
 
         /// <summary>将缓冲区中的所有内容刷新到基础流，并同时刷新基础流。</summary>
@@ -90,26 +108,19 @@ namespace XPatchLib.Json
         /// <param name="pName">对象名称。</param>
         public void WriteStartObject(string pName)
         {
-            if (_writer.WriteState == WriteState.Start)
-            {
-                _writer.WriteStartObject();
-                _writerState.Push(JsonTextWriterState.Object);
+            _writer.WriteStartObject();
+            _writerState.Push(JsonTextWriterState.Object);
 #if DEBUG
-                Debug.WriteLine(string.Format("WriteStartObject '{0}'.", pName));
+            Debug.WriteLine(string.Format("WriteStartObject '{0}'.", pName));
 #endif
-            }
-            else
-            {
-                WriteStartProperty(pName);
-            }
         }
 
         /// <summary>写入对象结束标记。</summary>
         public void WriteEndObject()
         {
-            if (_writer.WriteState == WriteState.Start)
+            if (_writerState.Peek() == JsonTextWriterState.Object)
             {
-
+                _writerState.Pop();
                 _writer.WriteEndObject();
 #if DEBUG
                 Debug.WriteLine("WriteEndObject.");
@@ -145,14 +156,11 @@ namespace XPatchLib.Json
         /// <param name="pName">属性名称。</param>
         public void WriteStartProperty(string pName)
         {
-            if (_writer.WriteState != WriteState.Array)
-            {
-                _writer.WritePropertyName(pName);
-                _writerState.Push(JsonTextWriterState.Property);
+            _writer.WritePropertyName(pName);
+            _writerState.Push(JsonTextWriterState.Property);
 #if DEBUG
-                Debug.WriteLine(string.Format("WriteStartProperty '{0}'.", pName));
+            Debug.WriteLine(string.Format("WriteStartProperty '{0}'.", pName));
 #endif
-            }
         }
 
         /// <summary>写入属性结束标记。</summary>
@@ -173,6 +181,10 @@ namespace XPatchLib.Json
         /// </summary>
         public void WriteStartArray(string pName)
         {
+            if (_writer.WriteState == WriteState.Start)
+            {
+                WriteStartDocumentCore();
+            }
             _writer.WritePropertyName(pName);
             _writer.WriteStartArray();
             _writerState.Push(JsonTextWriterState.Array);
@@ -198,10 +210,41 @@ namespace XPatchLib.Json
         /// <param name="pValue">待写入的文本。</param>
         public void WriteValue(string pValue)
         {
+            bool needEnd = false;
+            if (_writerState.Peek() != JsonTextWriterState.Property)
+            {
+                WriteStartProperty(string.Empty);
+                needEnd = true;
+            }
             _writer.WriteValue(pValue);
 #if DEBUG
             Debug.WriteLine(string.Format("WriteValue '{0}'.", pValue));
 #endif
+            if (needEnd)
+            {
+                WriteEndProperty();
+            }
+        }
+
+        public void WriteStartArrayItem(string pName)
+        {
+            _writer.WriteStartObject();
+            _writerState.Push(JsonTextWriterState.ArrayItem);
+#if DEBUG
+            Debug.WriteLine(string.Format("WriteStartArrayItem '{0}'.", pName));
+#endif
+        }
+
+        public void WriteEndArrayItem()
+        {
+            if (_writerState.Peek() == JsonTextWriterState.ArrayItem)
+            {
+                _writerState.Pop();
+                _writer.WriteEndObject();
+#if DEBUG
+                Debug.WriteLine("WriteEndArrayItem.");
+#endif
+            }
         }
 
         /// <summary>
