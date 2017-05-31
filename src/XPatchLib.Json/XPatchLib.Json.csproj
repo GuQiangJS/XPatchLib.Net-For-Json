@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonSerializeSetting.cs" />
+    <Compile Include="JsonTextReader.cs" />
     <Compile Include="JsonTextWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

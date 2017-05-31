@@ -42,6 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="XPatchLib">
       <HintPath>..\..\..\XPatchLib.Net\src\Bin\XPatchLib.dll</HintPath>
     </Reference>
@@ -62,7 +63,7 @@
     <Compile Include="TestBase.cs" />
     <Compile Include="TestClass\Account.cs" />
     <Compile Include="TestClass\Person.cs" />
-    <Compile Include="TestJsonWriter.cs" />
+    <Compile Include="TestJsonReadAndWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
