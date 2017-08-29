@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <TargetFrameworks Condition="'$(TestFrameworks)'==''">NET40;NET35;NET20;NETCOREAPP1.0;NETCOREAPP1.1</TargetFrameworks>
+    <!--<TargetFramework>NET40</TargetFramework>-->
+    <!-- Workaround for https://github.com/nunit/nunit3-vs-adapter/issues/296 -->
+    <DebugType Condition="'$(TargetFramework)' != '' AND '$(TargetFramework)' != 'netcoreapp1.0' AND '$(TargetFramework)' != 'netcoreapp1.1'">Full</DebugType>
+    <ProjectGuid>798b9aac-6fca-4dfc-9526-45c78cd0c63d</ProjectGuid>
+    <NoWarn>1701;1702;1705;0659</NoWarn>
+    <RootNamespace>XPatchLib.Json.UntiTest</RootNamespace>
+    <AssemblyName>XPatchLib.Json.UntiTest</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'!='netcoreapp1.0' OR '$(TargetFramework)'!='netcoreapp1.1'">
+    <PackageReference Include="NUnit" Version="3.7.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.8.0-alpha1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='NET40' OR '$(TargetFramework)'=='NET35' OR '$(TargetFramework)'=='NET46'">
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Core" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='NET46'">
+    <PackageReference Include="BenchmarkDotNet" Version="0.10.8" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='NET40'">
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.0' OR '$(TargetFramework)'=='netcoreapp1.1'">
+    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.1'">
+    <PackageReference Include="BenchmarkDotNet" Version="0.10.8" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net20'">
+    <AssemblyTitle>XPatchLib UnitTest .NET 2.0</AssemblyTitle>
+    <DefineConstants>NET;NUNIT;NET_20;NET_20_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <AssemblyTitle>XPatchLib UnitTest .NET 3.5</AssemblyTitle>
+    <DefineConstants>NET;NUNIT;NET_35;NET_20_UP;NET_35_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <AssemblyTitle>XPatchLib UnitTest .NET 4.0</AssemblyTitle>
+    <DefineConstants>NET;NUNIT;NET_40;NET_20_UP;NET_35_UP;NET_40_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
+    <AssemblyTitle>XPatchLib UnitTest .NET 4.6</AssemblyTitle>
+    <DefineConstants>NET;NUNIT;BENCHMARK;NET_46;NET_20_UP;NET_35_UP;NET_40_UP;NET_46_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp1.1'">
+    <AssemblyTitle>XPatchLib UnitTest .NET Standard 1.3</AssemblyTitle>
+    <ReferringTargetFrameworkForProjectReferences>.NETStandard,Version=v1.3</ReferringTargetFrameworkForProjectReferences>
+    <DefineConstants>NETSTANDARD;XUNIT;BENCHMARK;NETSTANDARD_1_3;NETSTANDARD_1_0_UP;NETSTANDARD_1_1_UP;NETSTANDARD_1_2_UP;NETSTANDARD_1_3_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp1.0'">
+    <AssemblyTitle>XPatchLib UnitTest .NET Standard 1.0</AssemblyTitle>
+    <ReferringTargetFrameworkForProjectReferences>.NETStandard,Version=v1.0</ReferringTargetFrameworkForProjectReferences>
+    <DefineConstants>NETSTANDARD;XUNIT;NETSTANDARD_1_0;NETSTANDARD_1_0_UP</DefineConstants>
+  </PropertyGroup>
+  
+  
+  <ItemGroup>
+    <ProjectReference Include="..\XPatchLib.Json\XPatchLib.Json.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+    <PackageReference Include="XPatchLib" Version="3.0.5.10" />
+  </ItemGroup>
+  <!--<ItemGroup>
+    <ProjectReference Include="..\XPatchLib.Json\XPatchLib.Json.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+    <Reference Include="XPatchLib">
+      <HintPath>..\..\Bin\$(TargetFramework)\XPatchLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>-->
+</Project>

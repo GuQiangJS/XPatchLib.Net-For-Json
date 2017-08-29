@@ -11,3 +11,6 @@ src/XPatchLib.Json/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /src/XPatchLib.Json/bin/Release
 /src/XPatchLib.Json/obj/Release
 /src/XPatchLib.Json.UnitTest/obj/Release
+/.vs/XPatchLib.Net/v15
+/src/XPatchLib.Json.UntiTest/bin
+/src/XPatchLib.Json.UntiTest/obj

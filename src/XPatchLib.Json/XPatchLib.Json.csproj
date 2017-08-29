@@ -1,77 +1,63 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{23BA4394-E347-4FF4-83D4-8A8454D39615}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XPatchLib.Json</RootNamespace>
+    <TargetFrameworks Condition="'$(LibraryFrameworks)'==''">net20;net35;net40;netstandard1.0;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
+    <!--<TargetFramework>NET40</TargetFramework>-->
+    <Description>Patch Serialization Library for the .Net</Description>
+    <Company />
+    <Authors>Qiang Gu</Authors>
+    <FileVersion>0.0.0.15</FileVersion>
+    <VersionPrefix>0.0.0.15</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">DEBUG</VersionSuffix>
+    <PackageLicenseUrl>https://github.com/GuQiangJS/XPatchLib.Net/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/GuQiangJS/XPatchLib.Net</PackageProjectUrl>
+    <NeutralLanguage>zh-Hans</NeutralLanguage>
+    <Copyright>Copyright © 2013-2017 - GuQiang</Copyright>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageTags>Serialization Patch Json</PackageTags>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\XPatchLib.Json.xml</DocumentationFile>
+    <RootNamespace>XPatchLib</RootNamespace>
     <AssemblyName>XPatchLib.Json</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\XPatchLib.Json.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>..\Docs\Release.AllRules.Error.ruleset</CodeAnalysisRuleSet>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net20'">
+    <AssemblyTitle>XPatchLib.Json 2.0</AssemblyTitle>
+    <DefineConstants>NET;NET_20;NET_20_UP</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>..\Docs\Release.AllRules.Error.ruleset</CodeAnalysisRuleSet>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <AssemblyTitle>XPatchLib.Json 3.5</AssemblyTitle>
+    <DefineConstants>NET;NET_35;NET_20_UP;NET_35_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <AssemblyTitle>XPatchLib.Json 4.0</AssemblyTitle>
+    <DefineConstants>NET;NET_40;NET_20_UP;NET_35_UP;NET_40_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
+    <AssemblyTitle>XPatchLib.Json Standard 1.0</AssemblyTitle>
+    <DefineConstants>NETSTANDARD;NETSTANDARD_1_0;NETSTANDARD_1_0_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
+    <AssemblyTitle>XPatchLib.Json Standard 1.1</AssemblyTitle>
+    <DefineConstants>NETSTANDARD;NETSTANDARD_1_1;NETSTANDARD_1_0_UP;NETSTANDARD_1_1_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <AssemblyTitle>XPatchLib.Json Standard 1.3</AssemblyTitle>
+    <DefineConstants>NETSTANDARD;NETSTANDARD_1_3;NETSTANDARD_1_0_UP;NETSTANDARD_1_1_UP;NETSTANDARD_1_3_UP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <AssemblyTitle>XPatchLib.Json Standard 2.0</AssemblyTitle>
+    <DefineConstants>NETSTANDARD;NETSTANDARD_2_0;NETSTANDARD_1_0_UP;NETSTANDARD_1_1_UP;NETSTANDARD_1_3_UP;NETSTANDARD_2_0_UP</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="XPatchLib" Version="3.0.5.10" />
+  </ItemGroup>
+  <!--<ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <Reference Include="XPatchLib">
+      <HintPath>..\..\Bin\$(TargetFramework)\XPatchLib.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="XPatchLib, Version=2.0.0.95, Culture=neutral, PublicKeyToken=ba48c1962d234d2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\XPatchLib.Net\XPatchLib.Output\Debug\XPatchLib.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="JsonSerializeSetting.cs" />
-    <Compile Include="JsonTextReader.cs" />
-    <Compile Include="JsonTextWriter.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>echo f | xcopy /D /F /Y "$(TargetPath)" "$(SolutionDir)Bin\$(TargetFileName)"
-echo f | xcopy /D /F /Y "$(TargetPath)" "$(SolutionDir)..\XPatchLib.Json.Output\$(ConfigurationName)\$(TargetFileName)"
-echo f | xcopy /D /F /Y "$(TargetDir)$(TargetName).xml" "$(SolutionDir)..\XPatchLib.Json.Output\$(ConfigurationName)\$(TargetName).xml"</PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  </ItemGroup>-->
 </Project>

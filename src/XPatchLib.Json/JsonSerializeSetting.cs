@@ -2,88 +2,74 @@
 // Licensed under the LGPL-3.0 license. See LICENSE file in the project root for full license information.
 
 using System;
-using System.ComponentModel;
 
 namespace XPatchLib
 {
     /// <summary>
-    ///     Json类型写入器的默认设置。
+    ///     JSON类型写入器的默认设置。
     /// </summary>
     /// <seealso cref="XPatchLib.ISerializeSetting" />
-    public class JsonSerializeSetting : ISerializeSetting, INotifyPropertyChanged
+    public class JsonSerializeSetting : SerializeSetting
     {
-        private string _actionName = "Action";
-
-        private DateTimeSerializationMode _mode = DateTimeSerializationMode.RoundtripKind;
-
-        private bool _serializeDefalutValue;
+        private const char _afc = '@';
+        private string _sain = "#text";
 
         /// <summary>
-        ///     在更改属性值时发生。
+        ///     获取读写特性时开头的字符
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        ///     获取或设置在字符串与 <see cref="DateTime" /> 之间转换时，如何处理时间值。
-        /// </summary>
-        /// <value>默认为 <see cref="DateTimeSerializationMode.RoundtripKind" />。</value>
-        public DateTimeSerializationMode Mode
+        /// <value>默认值是 <c>@</c> 。</value>
+        //AttributeFirsChar
+        internal char AFC
         {
-            get { return _mode; }
-            set
-            {
-                if (_mode != value)
-                {
-                    _mode = value;
-                    OnPropertyChanged("Mode");
-                }
-            }
+            get { return _afc; }
         }
 
         /// <summary>
-        ///     获取或设置是否序列化默认值。
-        /// </summary>
-        /// <value>默认为 <c>false</c>。</value>
-        public bool SerializeDefalutValue
-        {
-            get { return _serializeDefalutValue; }
-            set
-            {
-                if (_serializeDefalutValue != value)
-                {
-                    _serializeDefalutValue = value;
-                    OnPropertyChanged("SerializeDefalutValue");
-                }
-            }
-        }
-
-        /// <summary>
-        ///     获取或设置序列化/反序列化时，文本中标记 '<b>动作</b>' 的文本。
+        ///     获取或设置 Json 序列化/反序列化时，文本中标记 '<b>值</b>' 的文本。
         /// </summary>
         /// <value>
-        ///     默认值是 "<b>Action</b>" 。
+        ///     默认值是 <c>#text</c> 。
         /// </value>
-        /// <exception cref="ArgumentNullException">当设置值是传入 <b>null</b> 或 为空字符串 时。</exception>
-        public string ActionName
+        /// <exception cref="ArgumentNullException">当设置值是传入 <b>null</b> 时。</exception>
+        /// <exception cref="ArgumentException">当设置值为空时。</exception>
+        //SimpleArrayItemName
+        public string SAIN
         {
-            get { return _actionName; }
+            get { return _sain; }
             set
             {
                 if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException(nameof(SAIN));
+                if (_sain != value)
                 {
-                    throw new ArgumentNullException("value");
-                }
-                if (_actionName != value)
-                {
-                    _actionName = value;
-                    OnPropertyChanged("ActionName");
+                    _sain = value;
+                    OnPropertyChanged(nameof(SAIN));
                 }
             }
         }
 
-        protected virtual void OnPropertyChanged(string propertyName) {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        /// <summary>创建作为当前实例副本的新对象。</summary>
+        /// <returns>作为此实例副本的新对象。</returns>
+        /// <filterpriority>2</filterpriority>
+        public override object Clone()
+        {
+            JsonSerializeSetting result = new JsonSerializeSetting();
+            result.MemberType = MemberType;
+#if NET || NETSTANDARD_2_0_UP
+            result.EnableOnDeserializedAttribute = EnableOnDeserializedAttribute;
+            result.EnableOnSerializedAttribute = EnableOnSerializedAttribute;
+            result.EnableOnDeserializingAttribute = EnableOnDeserializingAttribute;
+            result.EnableOnSerializingAttribute = EnableOnSerializingAttribute;
+#endif
+            result.ActionName = ActionName;
+            result.Mode = Mode;
+            result.Modifier = Modifier;
+            result.SerializeDefalutValue = SerializeDefalutValue;
+#if NET_40_UP || NETSTANDARD_2_0_UP
+            result.AssemblyQualifiedName = AssemblyQualifiedName;
+#endif
+            result.SAIN = SAIN;
+            return result;
         }
     }
 }
