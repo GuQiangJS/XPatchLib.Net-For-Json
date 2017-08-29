@@ -51,12 +51,12 @@ namespace XPatchLib
             while (true)
             {
                 //开始预读一个节点
-                ExtendJsonTextReader.ExtendJsonToken token = _reader.PreRead(0);
+                ExtendJsonToken token = _reader.PreRead(0);
                 if (token != null && token.TokenType == JsonToken.PropertyName)
                     if (token.Value[0] == _setting.AFC)
                     {
                         //当节点是PropertyName时，继续读下一个节点，如果是String，则表示是一组键值对
-                        ExtendJsonTextReader.ExtendJsonToken nextToken = _reader.PreRead(1);
+                        ExtendJsonToken nextToken = _reader.PreRead(1);
                         if (nextToken != null && nextToken.TokenType == JsonToken.String)
                         {
                             int len = result.GetLength(0);
@@ -77,7 +77,7 @@ namespace XPatchLib
                     else if (string.Equals(token.Value, _setting.SAIN))
                     {
                         //当节点是PropertyName时，继续读下一个节点，如果是 _setting.SAIN(Exp:#text)，则表示是一组键值对
-                        ExtendJsonTextReader.ExtendJsonToken nextToken = _reader.PreRead(1);
+                        ExtendJsonToken nextToken = _reader.PreRead(1);
                         if (nextToken != null && nextToken.TokenType == JsonToken.String)
                         {
                             _reader.ExtendValue = nextToken.Value;

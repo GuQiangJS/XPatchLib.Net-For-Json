@@ -4974,12 +4974,12 @@
     "C:\\Users\\GuQiang\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "0.0.0.15-DEBUG",
+    "version": "0.0.0.16-DEBUG",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\XPatchLib.Net.Json\\src\\XPatchLib.Json\\XPatchLib.Json.csproj",
+      "projectUniqueName": "C:\\Users\\GuQiang\\Documents\\Source\\Repos\\XPatchLib.Net.Json\\src\\XPatchLib.Json\\XPatchLib.Json.csproj",
       "projectName": "XPatchLib.Json",
-      "projectPath": "D:\\GitHub\\XPatchLib.Net.Json\\src\\XPatchLib.Json\\XPatchLib.Json.csproj",
-      "outputPath": "D:\\GitHub\\XPatchLib.Net.Json\\src\\XPatchLib.Json\\obj\\",
+      "projectPath": "C:\\Users\\GuQiang\\Documents\\Source\\Repos\\XPatchLib.Net.Json\\src\\XPatchLib.Json\\XPatchLib.Json.csproj",
+      "outputPath": "C:\\Users\\GuQiang\\Documents\\Source\\Repos\\XPatchLib.Net.Json\\src\\XPatchLib.Json\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "originalTargetFrameworks": [
@@ -5012,7 +5012,7 @@
         "dependencies": {
           "XPatchLib": {
             "target": "Package",
-            "version": "[3.0.5.10, )"
+            "version": "3.0.5.10"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -5024,7 +5024,7 @@
         "dependencies": {
           "XPatchLib": {
             "target": "Package",
-            "version": "[3.0.5.10, )"
+            "version": "3.0.5.10"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -5041,7 +5041,7 @@
           },
           "XPatchLib": {
             "target": "Package",
-            "version": "[3.0.5.10, )"
+            "version": "3.0.5.10"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -5058,7 +5058,7 @@
           },
           "XPatchLib": {
             "target": "Package",
-            "version": "[3.0.5.10, )"
+            "version": "3.0.5.10"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -5070,7 +5070,7 @@
         "dependencies": {
           "XPatchLib": {
             "target": "Package",
-            "version": "[3.0.5.10, )"
+            "version": "3.0.5.10"
           },
           "Newtonsoft.Json": {
             "target": "Package",

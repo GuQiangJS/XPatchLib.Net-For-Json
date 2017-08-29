@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPatchLib.Json", "XPatchLib.Json\XPatchLib.Json.csproj", "{EC2E011B-1C07-44AC-A910-3A1A60A55360}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPatchLib.Json.UntiTest", "XPatchLib.Json.UntiTest\XPatchLib.Json.UntiTest.csproj", "{798B9AAC-6FCA-4DFC-9526-45C78CD0C63D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPatchLib.Json.UnitTest", "XPatchLib.Json.UnitTest\XPatchLib.Json.UnitTest.csproj", "{798B9AAC-6FCA-4DFC-9526-45C78CD0C63D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

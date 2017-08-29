@@ -9,7 +9,7 @@
 
 using System;
 
-namespace XPatchLib.Json.UntiTest
+namespace XPatchLib.Json.UnitTest
 {
     public class TestFixtureAttribute : Attribute
     {

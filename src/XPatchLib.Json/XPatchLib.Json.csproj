@@ -7,8 +7,8 @@
     <Description>Patch Serialization Library for the .Net</Description>
     <Company />
     <Authors>Qiang Gu</Authors>
-    <FileVersion>0.0.0.15</FileVersion>
-    <VersionPrefix>0.0.0.15</VersionPrefix>
+    <FileVersion>0.0.0.16</FileVersion>
+    <VersionPrefix>0.0.0.16</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">DEBUG</VersionSuffix>
     <PackageLicenseUrl>https://github.com/GuQiangJS/XPatchLib.Net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/GuQiangJS/XPatchLib.Net</PackageProjectUrl>

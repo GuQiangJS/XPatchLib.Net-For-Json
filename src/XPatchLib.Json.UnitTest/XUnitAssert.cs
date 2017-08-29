@@ -5,54 +5,53 @@
 #if XUNIT
 using System;
 using System.Globalization;
+using Xunit;
 
-namespace XPatchLib.Json.UntiTest
+namespace XPatchLib.Json.UnitTest
 {
     internal class XUnitAssert
     {
         public static void IsInstanceOf(Type expectedType, object o)
         {
-            Xunit.Assert.IsType(expectedType, o);
+            Assert.IsType(expectedType, o);
         }
 
         public static void IsInstanceOf<T>(object o)
         {
-            Xunit.Assert.IsType(typeof(T),o);
+            Assert.IsType(typeof(T), o);
         }
 
         public static void AreEqual(double expected, double actual, double r)
         {
-            Xunit.Assert.Equal(expected, actual, 5); // hack
+            Assert.Equal(expected, actual, 5); // hack
         }
 
         public static void AreEqual(object expected, object actual, string message = null)
         {
-            Xunit.Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         public static void AreEqual<T>(T expected, T actual, string message = null)
         {
-            Xunit.Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         public static void AreNotEqual(object expected, object actual, string message = null)
         {
-            Xunit.Assert.NotEqual(expected, actual);
+            Assert.NotEqual(expected, actual);
         }
 
         public static void AreNotEqual<T>(T expected, T actual, string message = null)
         {
-            Xunit.Assert.NotEqual(expected, actual);
+            Assert.NotEqual(expected, actual);
         }
 
         public static void Fail(string message = null, params object[] args)
         {
             if (message != null)
-            {
                 message = string.Format(CultureInfo.InvariantCulture, message, args);
-            }
 
-            Xunit.Assert.True(false, message);
+            Assert.True(false, message);
         }
 
         public static void Pass()
@@ -61,22 +60,22 @@ namespace XPatchLib.Json.UntiTest
 
         public static void IsTrue(bool condition, string message = null)
         {
-            Xunit.Assert.True(condition);
+            Assert.True(condition);
         }
 
         public static void IsFalse(bool condition)
         {
-            Xunit.Assert.False(condition);
+            Assert.False(condition);
         }
 
         public static void IsNull(object o)
         {
-            Xunit.Assert.Null(o);
+            Assert.Null(o);
         }
 
         public static void IsNotNull(object o)
         {
-            Xunit.Assert.NotNull(o);
+            Assert.NotNull(o);
         }
 
         public static void IsNull(object o, string message, params object[] args)
@@ -91,15 +90,15 @@ namespace XPatchLib.Json.UntiTest
 
         public static void AreNotSame(object expected, object actual)
         {
-            Xunit.Assert.NotSame(expected, actual);
+            Assert.NotSame(expected, actual);
         }
 
         public static void AreSame(object expected, object actual)
         {
-            Xunit.Assert.Same(expected, actual);
+            Assert.Same(expected, actual);
         }
 
-        public static TException Throws<TException>(System.Action action, params string[] possibleMessages)
+        public static TException Throws<TException>(Action action, params string[] possibleMessages)
             where TException : Exception
         {
             try
@@ -112,22 +111,20 @@ namespace XPatchLib.Json.UntiTest
             catch (TException ex)
             {
                 if (possibleMessages == null || possibleMessages.Length == 0)
-                {
                     return ex;
-                }
                 foreach (string possibleMessage in possibleMessages)
-                {
                     if (string.Equals(possibleMessage, ex.Message))
-                    {
                         return ex;
-                    }
-                }
 
-                throw new Exception("Unexpected exception message." + Environment.NewLine + "Expected one of: " + string.Join(Environment.NewLine, possibleMessages) + Environment.NewLine + "Got: " + ex.Message + Environment.NewLine + Environment.NewLine + ex);
+                throw new Exception("Unexpected exception message." + Environment.NewLine + "Expected one of: " +
+                                    string.Join(Environment.NewLine, possibleMessages) + Environment.NewLine + "Got: " +
+                                    ex.Message + Environment.NewLine + Environment.NewLine + ex);
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Exception of type {0} expected; got exception of type {1}.", typeof(TException).Name, ex.GetType().Name), ex);
+                throw new Exception(
+                    string.Format("Exception of type {0} expected; got exception of type {1}.", typeof(TException).Name,
+                        ex.GetType().Name), ex);
             }
         }
     }
