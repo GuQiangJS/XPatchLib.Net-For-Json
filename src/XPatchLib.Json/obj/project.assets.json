@@ -4974,7 +4974,7 @@
     "C:\\Users\\GuQiang\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "0.0.0.16-DEBUG",
+    "version": "0.0.0.17",
     "restore": {
       "projectUniqueName": "C:\\Users\\GuQiang\\Documents\\Source\\Repos\\XPatchLib.Net.Json\\src\\XPatchLib.Json\\XPatchLib.Json.csproj",
       "projectName": "XPatchLib.Json",

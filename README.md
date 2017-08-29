@@ -2,6 +2,10 @@
 
 本项目旨在创建 XPatchLib 的针对 Json 格式的扩展包。使用本扩展包的内容可以使程序在使用 XPatchLib 时支持产生/合并 Json 格式增量内容。
 
+## 使用
+
+使用 `XPatchLib.Json` 最简单的方法是通过 XPatchLib.Json NuGet 软件包。 只需将 [NuGet](https://www.nuget.org/packages/XPatchLib.Json/) 包添加到您的VS项目中即可。
+
 ## 支持版本
 
 运行时库被构建为便携式类库，支持：
