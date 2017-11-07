@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks Condition="'$(LibraryFrameworks)'==''">net20;net35;net40;netstandard1.0;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks Condition="'$(LibraryFrameworks)'==''">net20;net35;net40;netstandard1.0;netstandard1.3;netstandard2.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
     <!--<TargetFramework>NET40</TargetFramework>-->
     <Description>Incremental serializer extension for Json format.</Description>
     <Company />
     <Authors>Qiang Gu</Authors>
-    <FileVersion>0.0.0.17</FileVersion>
-    <VersionPrefix>0.0.0.17</VersionPrefix>
+    <FileVersion>0.0.0.18</FileVersion>
+    <VersionPrefix>0.0.0.18</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">DEBUG</VersionSuffix>
     <PackageLicenseUrl>https://github.com/GuQiangJS/XPatchLib.Net.Json/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/GuQiangJS/XPatchLib.Net.Json</PackageProjectUrl>
@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="XPatchLib" Version="3.0.5.10" />
+    <PackageReference Include="XPatchLib" Version="3.0.5.12" />
   </ItemGroup>
   <!--<ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />

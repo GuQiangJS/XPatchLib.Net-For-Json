@@ -14,7 +14,7 @@ using Xunit.Abstractions;
 namespace XPatchLib.Json.UnitTest
 {
     [TestFixture]
-    internal class SimpleObjectTest : TestBase
+    public class SimpleObjectTest : TestBase
     {
 #if XUNIT
         public SimpleObjectTest(ITestOutputHelper output) : base(output)

@@ -18,3 +18,5 @@ src/XPatchLib.Json/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /src/XPatchLib.Json.UnitTest/obj
 /src/XPatchLib.Json/obj/XPatchLib.Json.0.0.0.17.nuspec
 /src/XPatchLib.Json/obj/XPatchLib.Json.0.0.0.16.nuspec
+/src/.vs/XPatchLib.Json/v15/Server/sqlite3
+/src/XPatchLib.Json/obj
