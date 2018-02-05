@@ -77,7 +77,6 @@
     <ProjectReference Include="..\XPatchLib.Json\XPatchLib.Json.csproj" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
-    <PackageReference Include="XPatchLib" Version="3.0.5.12" />
   </ItemGroup>
   <!--<ItemGroup>
     <ProjectReference Include="..\XPatchLib.Json\XPatchLib.Json.csproj" />

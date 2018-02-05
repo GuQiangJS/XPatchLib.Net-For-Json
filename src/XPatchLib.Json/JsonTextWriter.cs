@@ -1,4 +1,4 @@
-﻿// Copyright © 2013-2017 - GuQiang
+﻿// Copyright © 2013-2018 - GuQiang
 // Licensed under the LGPL-3.0 license. See LICENSE file in the project root for full license information.
 
 using System;
@@ -43,10 +43,6 @@ namespace XPatchLib
             _indentChar = ' ';
             _quoteChar = '"';
             _encoding = new UTF8Encoding(false);
-
-#if (NET || NETSTANDARD_2_0_UP)
-            IgnoreAttributeType = typeof(JsonIgnoreAttribute);
-#endif
         }
 
         /// <summary>
@@ -213,18 +209,6 @@ namespace XPatchLib
                 _textWriter.WritePropertyName(_setting.SAIN);
             _textWriter.WriteValue(pValue);
         }
-
-        /// <summary>
-        ///     获取或设置指示 <see cref="T:XPatchLib.Serializer" /> 方法
-        ///     <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" />
-        ///     进行序列化的公共字段或公共读/写属性值。
-        /// </summary>
-        /// <remarks>
-        ///     用于控制如何 <see cref="T:XPatchLib.Serializer" /> 方法
-        ///     <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" /> 序列化对象。
-        /// </remarks>
-        /// <seealso cref="P:Newtonsoft.Json.JsonIgnoreAttribute" />
-        public Type IgnoreAttributeType { get; set; }
 
         /// <summary>获取或设置写入器设置。</summary>
         /// <exception cref="ArgumentOutOfRangeException">当赋值不是<see cref="JsonSerializeSetting" />类型实例时。</exception>

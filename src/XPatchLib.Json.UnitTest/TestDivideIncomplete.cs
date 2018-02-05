@@ -1,4 +1,4 @@
-﻿// Copyright © 2013-2017 - GuQiang
+﻿// Copyright © 2013-2018 - GuQiang
 // Licensed under the LGPL-3.0 license. See LICENSE file in the project root for full license information.
 
 using System.Collections.Generic;
@@ -27,6 +27,7 @@ namespace XPatchLib.UnitTest.ForXml
         }
 #endif
         [Test]
+        [Description("测试反序列化不完整的Json，是否会抛出XmlException异常")]
         public void TestDeserializeIncompleteXml()
         {
             Serializer serializer = new Serializer(typeof(List<SimpleClass>));

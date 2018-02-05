@@ -1,7 +1,8 @@
-﻿// Copyright © 2013-2017 - GuQiang
+﻿// Copyright © 2013-2018 - GuQiang
 // Licensed under the LGPL-3.0 license. See LICENSE file in the project root for full license information.
 
 using System;
+using Newtonsoft.Json;
 
 namespace XPatchLib
 {
@@ -13,6 +14,36 @@ namespace XPatchLib
     {
         private const char _afc = '@';
         private string _sain = "#text";
+
+        private Type _ignoreAttributeType = 
+#if (NET || NETSTANDARD_2_0_UP)
+            typeof(JsonIgnoreAttribute);
+#else
+            null;
+#endif
+
+        /// <summary>
+        ///     获取或设置指示 <see cref="T:XPatchLib.Serializer" /> 方法
+        ///     <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" />
+        ///     进行序列化的公共字段或公共读/写属性值。
+        /// </summary>
+        /// <remarks>
+        ///     用于控制如何 <see cref="T:XPatchLib.Serializer" /> 方法
+        ///     <see cref="M:XPatchLib.Serializer.Divide(XPatchLib.ITextWriter,System.Object,System.Object)" /> 序列化对象。
+        /// </remarks>
+        /// <seealso cref="P:Newtonsoft.Json.JsonIgnoreAttribute" />
+        public override Type IgnoreAttributeType
+        {
+            get { return _ignoreAttributeType; }
+            set
+            {
+                if (_ignoreAttributeType != value)
+                {
+                    _ignoreAttributeType = value;
+                    OnPropertyChanged(nameof(IgnoreAttributeType));
+                }
+            }
+        }
 
         /// <summary>
         ///     获取读写特性时开头的字符
@@ -68,6 +99,7 @@ namespace XPatchLib
 #if NET_40_UP || NETSTANDARD_2_0_UP
             result.AssemblyQualifiedName = AssemblyQualifiedName;
 #endif
+            result.IgnoreAttributeType = IgnoreAttributeType;
             result.SAIN = SAIN;
             return result;
         }

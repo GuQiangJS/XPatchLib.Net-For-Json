@@ -7,13 +7,13 @@
     <Description>Incremental serializer extension for Json format.</Description>
     <Company />
     <Authors>Qiang Gu</Authors>
-    <FileVersion>0.0.0.18</FileVersion>
-    <VersionPrefix>0.0.0.18</VersionPrefix>
+    <FileVersion>0.0.0.19</FileVersion>
+    <VersionPrefix>0.0.0.19</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">DEBUG</VersionSuffix>
     <PackageLicenseUrl>https://github.com/GuQiangJS/XPatchLib.Net.Json/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/GuQiangJS/XPatchLib.Net.Json</PackageProjectUrl>
     <NeutralLanguage>zh-Hans</NeutralLanguage>
-    <Copyright>Copyright © 2013-2017 - GuQiang</Copyright>
+    <Copyright>Copyright © 2013-2018 - GuQiang</Copyright>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageTags>Serialization Incremental Patch Json</PackageTags>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="XPatchLib" Version="3.0.5.12" />
+    <PackageReference Include="XPatchLib" Version="4.0.2.1" />
   </ItemGroup>
   <!--<ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
