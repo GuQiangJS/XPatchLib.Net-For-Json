@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="XPatchLib" Version="4.0.2.1" />
+    <PackageReference Include="XPatchLib" Version="4.0.2.3" />
   </ItemGroup>
   <!--<ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
